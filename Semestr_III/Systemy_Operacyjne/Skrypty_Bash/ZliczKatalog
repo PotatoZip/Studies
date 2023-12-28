@@ -1,0 +1,30 @@
+if [ "$#" -eq 0 ]; then
+echo "Nie podano sciezki katalogu"
+exit 1
+fi
+
+echo r - zlicz pliki zawierajace prawo r
+echo w - zlicz pliki zawierajace prawo w
+echo x - zlicz katalogi zawierajace prawo x
+echo k - koniec
+
+kat=$1
+
+while true;
+do
+read wybor
+if [ "$wybor" == "r" ]; then
+count=$(find "$kat" -type f -perm /u=r | wc -l)
+echo "Liczba plikow z prawem r: $count"
+elif [ "$wybor" == "w" ]; then
+count=$(find "$kat" -type f -perm /u=w | wc -l)
+echo "Liczba plikow z prawem w: $count"
+elif [ "$wybor" == "x" ]; then
+count=$(find "$kat" -mindepth 1 -type d -perm /u=x | wc -l)
+echo "Liczba katalogow z prawem x: $count"
+elif [ "$wybor" == "k" ]; then
+exit 1
+else
+echo "Niepoprawny wybor"
+fi 
+done

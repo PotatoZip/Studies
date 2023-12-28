@@ -1,0 +1,7 @@
+﻿  Lab_4.2.cpp
+D:\PK\Semestr II\JiPP_I\Lab_4.2\Lab_4.2\Lab_4.2.cpp(51,10): warning C4473: „scanf_s”: przekazano niewystarczającą liczbę argumentów dla ciągu formatowania
+D:\PK\Semestr II\JiPP_I\Lab_4.2\Lab_4.2\Lab_4.2.cpp(51,10): message : symbole zastępcze i ich parametry oczekują 2 argumentów ze zmienną liczbą argumentów, ale podano następującą liczbę zmiennych argumentów: 1
+D:\PK\Semestr II\JiPP_I\Lab_4.2\Lab_4.2\Lab_4.2.cpp(51,10): message : brakujący argument 2 o zmiennej liczbie parametrów jest wymagany w ciągu formatu „%c”
+D:\PK\Semestr II\JiPP_I\Lab_4.2\Lab_4.2\Lab_4.2.cpp(51,10): message : ten argument jest używany jako rozmiar bufora
+D:\PK\Semestr II\JiPP_I\Lab_4.2\Lab_4.2\Lab_4.2.cpp(58,8): warning C4244: "inicjowanie": konwersja z "double" do "int", możliwa utrata danych
+  Lab_4.2.vcxproj -> D:\PK\Semestr II\JiPP_I\Lab_4.2\x64\Debug\Lab_4.2.exe

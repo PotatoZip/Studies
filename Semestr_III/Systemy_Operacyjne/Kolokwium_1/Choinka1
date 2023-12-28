@@ -1,0 +1,25 @@
+if [ "$#" -ne 3 ]; then
+    echo "Nieprawidlowe parametry"
+    exit 1
+fi
+
+znak=$1
+lvl=$2
+odstep=$3
+
+for ((i=0; i<$lvl; i++)); do
+    tmpLvl=1
+    tmpOdstep=$odstep
+    for ((j=0; j<$i; j++)); do
+        for ((z=0; z<$tmpOdstep; z++)); do
+            echo -n " "
+        done
+        tmpOdstep=$(($tmpOdstep-1))
+        for ((p=0; p<$((2*$tmpLvl-1)); p++)); do
+            echo -n "$znak"
+        done
+        echo 
+        tmpLvl=$(($tmpLvl+1))
+    done
+done
+
