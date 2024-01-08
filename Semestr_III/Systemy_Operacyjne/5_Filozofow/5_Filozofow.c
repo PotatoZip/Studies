@@ -7,42 +7,68 @@
 #include <sys/sem.h>
 #include <sys/wait.h>
 #include <sys/errno.h>
+#include <sys/types.h>
 
 #define P 5 // Number of philosophers
 #define N 5 // Number of forks
+#define Q 3 // Number of iterations
 
-void takeFork(int semID, int forkIndex) {
-    struct sembuf operation = {forkIndex, -1, 0, SEM_UNDO};
-    semop(semID, &operation, 1);
+int forks[N] = {0};
+
+void printForksState(int forks[]) {
+    printf("Current state of forks: ");
+    for (int i = 0; i < N; i++) {
+        printf("%d ", forks[i]);
+    }
+    printf("\n");
 }
 
-void putFork(int semID, int forkIndex) {
-    struct sembuf operation = {forkIndex, 1, 0, SEM_UNDO};
-    semop(semID, &operation, 1);
+void signalSemafor(int semID, int number) {
+   struct sembuf operacje[1];
+   operacje[0].sem_num = number;
+   operacje[0].sem_op = 1;
+   //operacje[0].sem_flg = SEM_UNDO;
+
+   if (semop(semID, operacje, 1) == -1 ) {
+      perror("Blad semop (postSemafor): ");
+   }
+   return;
 }
+
+int waitSemafor(int semID, int number, int flags) {
+   int result;
+   struct sembuf operacje[1];
+   operacje[0].sem_num = number;
+   operacje[0].sem_op = -1;
+   operacje[0].sem_flg = 0 | flags;//SEM_UNDO;
+
+   if ( semop(semID, operacje, 1) == -1 ) {
+      //perror("Blad semop (waitSemafor)");
+      return -1;
+   }
+
+}   
 
 void philosopher(int semID, int philosopherIndex) {
-    while (1) {
-        printf("Philosopher %d is thinking.\n", philosopherIndex);
+    for (int i = 0; i < Q; i++) {
+        printf("Philosopher %d is thinking.\n", philosopherIndex + 1);
 
-        // Take left fork
-        takeFork(semID, philosopherIndex);
-        printf("Philosopher %d picked up left fork.\n", philosopherIndex);
+        printf("Waiting for Semaphore: %d\n", philosopherIndex + 1);
+        waitSemafor(semID, philosopherIndex, 0);
+        forks[philosopherIndex] = 1;
+        printf("Waiting for Semaphore: %d\n", ((philosopherIndex + 1) % N) + 1);
+        waitSemafor(semID,(philosopherIndex + 1) % N, 0);
+        forks[(philosopherIndex + 1) % N] = 1;
 
-        // Take right fork
-        takeFork(semID, (philosopherIndex + 1) % N);
-        printf("Philosopher %d picked up right fork.\n", philosopherIndex);
+        printf("Philosopher %d is eating.\n", philosopherIndex + 1);
+        printForksState(forks);
 
-        // Philosopher is eating
-        printf("Philosopher %d is eating.\n", philosopherIndex);
-
-        // Put down left fork
-        putFork(semID, philosopherIndex);
-        printf("Philosopher %d put down left fork.\n", philosopherIndex);
-
-        // Put down right fork
-        putFork(semID, (philosopherIndex + 1) % N);
-        printf("Philosopher %d put down right fork.\n", philosopherIndex);
+        printf("Signaling Semaphore: %d\n", philosopherIndex + 1);
+        signalSemafor(semID, philosopherIndex);
+        forks[philosopherIndex] = 1;
+        printf("Signaling Semaphore: %d\n", ((philosopherIndex + 1) % N) + 1);
+        signalSemafor(semID, (philosopherIndex+1)%N);
+        forks[(philosopherIndex + 1) % N] = 1;
     }
 }
 
@@ -92,6 +118,9 @@ int main() {
     for (int i = 0; i < N; i++) {
       semctl(semID, 0, IPC_RMID, NULL);
     }
+
+    printf("Semaphores removed\n");
+    fflush(stdout);
 
     printf("MAIN: Koniec.\n");
 
