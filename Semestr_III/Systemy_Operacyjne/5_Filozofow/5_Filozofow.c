@@ -12,12 +12,12 @@
 #define N 5 // Number of forks
 
 void takeFork(int semID, int forkIndex) {
-    struct sembuf operation = {forkIndex, -1, 0};
+    struct sembuf operation = {forkIndex, -1, 0, SEM_UNDO};
     semop(semID, &operation, 1);
 }
 
 void putFork(int semID, int forkIndex) {
-    struct sembuf operation = {forkIndex, 1, 0};
+    struct sembuf operation = {forkIndex, 1, 0, SEM_UNDO};
     semop(semID, &operation, 1);
 }
 
@@ -50,8 +50,7 @@ int main() {
     key_t klucz;
     int semID;
     char *procesy[P] = {"A", "B", "C", "D", "E"};
-    char sciezka[5];
-
+    
     // Generate IPC key for semaphores
     if ((klucz = ftok(".", 'A')) == -1) {
         perror("Blad ftok (main)");
