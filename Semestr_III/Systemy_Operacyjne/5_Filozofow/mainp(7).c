@@ -13,18 +13,22 @@
 #define N 5 // Liczba semaforow
 
 int main(int argc, char *argv[]) {
-    key_t kluczs,kluczm; //klucz do semaforow i pam. dzielonej
+    key_t kluczs,kluczm,kluczStan; //klucz do semaforow i pam. dzielonej
     int semID;           //identyfikator zestawu semaforow
     int shmID;           //inentyfikator pamieci dzielonej
+    //int idStan;
+    //int shmidStan;
+    int semidFork;
     char bufor[3];       //bufor
-    int *widelec;        //tablica widelcow – pamiec dzielona
+    int *widelec;        //tablica widelcow pamiec dzielona
+    //int *stany;
     
     if ( (kluczs = ftok(".", 'A')) == -1 ) {
         printf("Blad ftok (main)\n"); exit(1);
     }
     
     //Tworzenie zestawu semaforow
-    if ((semID = semget(kluczs, N, IPC_CREAT | IPC_EXCL | 0666)) == -1) {
+    if ((semID = semget(kluczs, N + 1, IPC_CREAT | IPC_EXCL | 0666)) == -1) {
         perror("Blad semget:");
         exit(1);
     }
@@ -39,9 +43,11 @@ int main(int argc, char *argv[]) {
 
     //klucz do pamieci dzielonej
     kluczm=ftok(".",'B');
+    //kluczStan=ftok(".","C");
     
     //tworzenie pamieci dzielonej
     shmID=shmget(kluczm,N*sizeof(int),IPC_CREAT|IPC_EXCL|0666);
+    //idStan=shmget(kluczStan,N*sizeof(int),IPC_CREAT|IPC_EXCL|0666);
     if (shmID==-1) {
         printf("blad shm\n");
         exit(1);
@@ -50,12 +56,22 @@ int main(int argc, char *argv[]) {
     fflush(stdout);
 
     //przydzielenie paamiedzi dzielonej
-    widelec = (int*)shmat(shmID,NULL,0);
+    widelec = shmat(shmID,NULL,0);
+    //stany = shmat(idStan,NULL,0);
+    semidFork = semget(kluczm, N, IPC_CREAT | 0600);
     
+    for(int i = 0; i < N; i++) {
+        semctl(semidFork, i, SETVAL, 1);
+    }
+
     //Ustawienie widelcow na 0
     for (int i = 0; i < N; i++) {
         widelec[i] = 0;
     }
+
+    // for (int i = 0; i < N; i++) {
+    //     stany[i] = 0;
+    // }
 
     //tworzenie procesow filozofow
     for (int i = 0; i < N; i++) {
@@ -65,7 +81,7 @@ int main(int argc, char *argv[]) {
                 exit(2);
             case 0:
                 sprintf(bufor,"%d",i); // przekazanie numeru
-                execl("./filozof2","filozof2",bufor, NULL);
+                execl("./filozof5","filozof5",bufor, NULL);
         }  
     }
 
@@ -75,11 +91,10 @@ int main(int argc, char *argv[]) {
     }
 
     //Usuwanie semaforow
-    for (int i = 0; i < N; i++) {
-        semctl(semID, i, IPC_RMID, NULL);
-    }
+    semctl(semID, N + 1, IPC_RMID, NULL);
 
     //zwolnienie pamieci dzielonej
     shmctl(shmID,IPC_RMID,NULL);
+    //shmctl(idStan, IPC_RMID,NULL);
     printf("MAIN: Koniec.\n");
 }
