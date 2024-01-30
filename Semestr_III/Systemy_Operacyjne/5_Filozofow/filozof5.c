@@ -6,13 +6,13 @@
 #include <sys/sem.h>
 #include <unistd.h>
 
-#define N 5 // Ilosc semaforow
-#define M 5 // Ilosc iteracji w petli
+#define N 5          // Ilosc semaforow
+#define M 2          // Ilosc iteracji w petli
 
-int *widelec;        //tablica widelcow
-//int *stany;
+int *widelec;        // Tablica widelcow
 
-void printFork() { 
+//Wypisuje stan widelcow
+void printFork() {
     printf("Stan widelcow: [");
     for (int i = 0; i < N; i++) {
         printf("%d", widelec[i]);
@@ -68,31 +68,29 @@ int waitSemafor(int semID, int number, int flags) {
 }
 
 int main(int argc, char* argv[]) {
-    key_t kluczs,kluczm,kluczStan; //klucz do semaforow i pamieci dzielonej
-    int semID;           //identyfikator zestawu semaforow
-    int numer;           //numer filozofa
-    int shmID;           //inentyfikator pamieci dzielonej
-    //int idStan;
-    int shmidFork;
-    //int shmidStan;
-    int semidFork;
+    key_t kluczs,kluczm,kluczStan; // Klucz do semaforow i pamieci dzielonej
+    int semID;                     // Identyfikator zestawu semaforow
+    int numer;                     // Numer filozofa
+    int shmID;                     // Identyfikator pamieci dzielonej
+//    int shmidFork;
+//    int semidFork;
     char bufor[3];
 
+    // Tworze klucz dla semaforow
     if ( (kluczs = ftok(".", 'A')) == -1 ) {
         printf("Blad ftok (main)\n");
         exit(1);
     }
 
-    //dostanie sie do zestawu semaforow
-    semID = alokujSem(kluczs, N + 1, IPC_CREAT | 0666);
+    // Dostanie sie do zestawu semaforow
+    semID = alokujSem(kluczs, N, IPC_CREAT | 0666);
 
-    //tworzenie klucza
+    // Tworzenie klucza pamieci dzielonej
     kluczm=ftok(".",'B');
-    //kluczStan=ftok(".",'C');
 
-    //dostep pamieci dzielonej
+    // Dostep pamieci dzielonej
     shmID=shmget(kluczm,5*sizeof(int),IPC_CREAT|0666);
-    //idStan=shmget(kluczStan,5*sizeof(int),IPC_CREAT|0666);
+
     if (shmID==-1) {
         printf("blad shm\n");
         exit(1);
@@ -100,11 +98,10 @@ int main(int argc, char* argv[]) {
 
     fflush(stdout);
 
-    //Przylaczenie pamiedzi dzielonej
+    // Przylaczenie pamiedzi dzielonej
     widelec = shmat(shmID,NULL,0);
-    //stany = shmat(idStan, NULL, 0);
 
-    //Pobiera numer filozofa
+    // Pobiera numer filozofa
     numer= atoi(argv[1]);
 
     for(int i = 0; i < M; i++) {
@@ -113,7 +110,7 @@ int main(int argc, char* argv[]) {
         printf("Filozof %d mysli\n", numer + 1);
 
         sleep(1);
-        
+
         //Czekanie na widelce
         waitSemafor(semID, numer, SEM_UNDO);
         waitSemafor(semID, (numer + 1) % 5, SEM_UNDO);
