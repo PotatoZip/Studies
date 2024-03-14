@@ -11,15 +11,15 @@ int main() {
         epsilonFloat /= 2.0f;
         mantysaFloat++;
     }
-    epsilonFloat *= 2.0f;
+    mantysaFloat--;
 
     while ((epsilonDouble + 1.0) > 1.0) {
         epsilonDouble /= 2.0;
         mantysaDouble++;
     }
-    epsilonDouble *= 2.0;
+    mantysaDouble--;
 
     std::cout << "Epsilon float: " << epsilonFloat << "\nEpsilon double: " << epsilonDouble << std::endl;
-    std::cout << "Mantysa dla float: " << mantysaFloat - 1 << "\nMantysa dla double: " << mantysaDouble - 1 << std::endl;
+    std::cout << "Mantysa dla float: " << mantysaFloat << "\nMantysa dla double: " << mantysaDouble << std::endl;
     return 0;
 }
