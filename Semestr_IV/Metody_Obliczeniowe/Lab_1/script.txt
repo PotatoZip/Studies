@@ -1,0 +1,9 @@
+set terminal pngcairo enhanced font 'arial,10' 
+set output 'wykres_taylor.png'                        
+
+set xlabel "log10x"                           
+set ylabel "log10|E|"                          
+set title "Wykres Exp"           
+set yrange [-17:2]
+
+plot "wyniki_taylor.txt" using 1:2 with points 
