@@ -16,6 +16,6 @@ set xlabel "log10x"
 set ylabel "log10|E|"                          
 set title "Wykres Final"           
 set yrange [-16.5:-15]
-set xrange [-10:10]
+set xrange [-30:10]
 
 plot "wyniki_final.txt" using 1:2 with points 

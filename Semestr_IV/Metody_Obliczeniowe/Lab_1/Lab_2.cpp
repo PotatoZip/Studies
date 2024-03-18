@@ -53,7 +53,7 @@ int main() {
         wynikiExp << std::scientific << std::setprecision(20) << logValue << " " << std::scientific << std::setprecision(20) << error << std::endl;
         wynikiTaylor << std::scientific << std::setprecision(20) << logValue << " " << std::scientific << std::setprecision(20) << bladLogarytmu(taylorFunction(xValue, functionValue), functionValue) << std::endl;
 
-        if (xValue < 0.1) {
+        if (log10(xValue) < 0.0) {
 			wynikiFinal << std::scientific << std::setprecision(20) << logValue << " " << std::scientific << std::setprecision(20) << bladLogarytmu(taylorFunction(xValue, functionValue),functionValue) << std::endl;
 		}
         else {
