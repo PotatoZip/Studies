@@ -36,9 +36,11 @@ int main() {
     std::ifstream file;
     std::ofstream wynikiExp;
     std::ofstream wynikiTaylor;
+    std::ofstream wynikiFinal;
     file.open("dane.txt", std::ios::in);
     wynikiExp.open("wyniki_exp.txt", std::ios::out);
     wynikiTaylor.open("wyniki_taylor.txt", std::ios::out);
+    wynikiFinal.open("wyniki_final.txt", std::ios::out);
     std::string line;
 
     while(file.good()) {
@@ -48,15 +50,22 @@ int main() {
         std:stream >> logValue >> xValue >> functionValue;
         double error = bladLogarytmu(expFunction(xValue), functionValue);
 
-        std::cout << std::scientific << std::setprecision(20) << logValue << " " << xValue << " " << functionValue << std::endl;
-        wynikiTaylor << std::scientific << std::setprecision(20) << logValue << " " << std::scientific << std::setprecision(20) << error << std::endl;
-        wynikiExp << std::scientific << std::setprecision(20) << logValue << " " << std::scientific << std::setprecision(20) << bladLogarytmu(taylorFunction(xValue, functionValue), functionValue) << std::endl;
+        wynikiExp << std::scientific << std::setprecision(20) << logValue << " " << std::scientific << std::setprecision(20) << error << std::endl;
+        wynikiTaylor << std::scientific << std::setprecision(20) << logValue << " " << std::scientific << std::setprecision(20) << bladLogarytmu(taylorFunction(xValue, functionValue), functionValue) << std::endl;
+
+        if (xValue < 0.1) {
+			wynikiFinal << std::scientific << std::setprecision(20) << logValue << " " << std::scientific << std::setprecision(20) << bladLogarytmu(taylorFunction(xValue, functionValue),functionValue) << std::endl;
+		}
+        else {
+            wynikiFinal << std::scientific << std::setprecision(20) << logValue << " " << std::scientific << std::setprecision(20) << bladLogarytmu(expFunction(xValue), functionValue) << std::endl;
+        }
 
     }
 
     file.close();
     wynikiExp.close();
     wynikiTaylor.close();
+    wynikiFinal.close();
 
     return 0;
 }
