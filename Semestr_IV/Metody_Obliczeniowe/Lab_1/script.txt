@@ -4,7 +4,7 @@ set output 'wykres_taylor.png'
 set xlabel "log10x"                           
 set ylabel "log10|E|"                          
 set title "Wykres Taylor"           
-set yrange [-17:2]
+set yrange [-17:10]
 set xrange [-10:10]
 
 plot "wyniki_taylor.txt" using 1:2 with points 
@@ -19,3 +19,14 @@ set yrange [-16.5:-15]
 set xrange [-30:10]
 
 plot "wyniki_final.txt" using 1:2 with points 
+
+set terminal pngcairo enhanced font 'arial,10' 
+set output 'wykres_exp.png'                        
+
+set xlabel "log10x"                           
+set ylabel "log10|E|"                          
+set title "Wykres Exp"           
+set yrange [-17:2]
+set xrange [-35:15]
+
+plot "wyniki_exp.txt" using 1:2 with points 
