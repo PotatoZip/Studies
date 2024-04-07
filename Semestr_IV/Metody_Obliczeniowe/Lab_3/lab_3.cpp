@@ -2,7 +2,7 @@
 #include <math.h>
 
 const double epsilon = 2.22045e-16;
-const int iterCount = 100;
+const int iterMax = 100;
 
 void picard();
 void bisection();
@@ -49,7 +49,7 @@ void picard() {
         i++;
 
         std::cout << i << "   x0:   " << x0 << "   estymator:   " << abs(fiX0 - x0) << "   F(x0):   " << function2(x0) << std::endl;
-    } while ((i < iterCount) && (abs(function2(x0)) > epsilon) && (abs(fiX0 - x0) > epsilon));
+    } while ((i < iterMax) && (abs(function2(x0)) > epsilon) && (abs(fiX0 - x0) > epsilon));
 
     if (abs(function2FiDx(x0)) > 1) {
         std::cout << "Funkcja jest rozbiezna" << std::endl;
@@ -88,7 +88,7 @@ void bisection() {
         }
         i++;
         std::cout << i << "   x0:   " << c <<  "   estymator:   " << abs((b-a)/2.0) << "   F(c):   " << functionC << std::endl;
-    } while ((i < iterCount) && (abs(functionC) > epsilon) && (abs((b-a)/2.0) > epsilon));
+    } while ((i < iterMax) && (abs(functionC) > epsilon) && (abs((b-a)/2.0) > epsilon));
 }
 
 void newton() {
@@ -107,7 +107,7 @@ void newton() {
         fX0 = x0 - (function1(x0)/function1Dx(x0));
         i++;
         std::cout << i << "   x0:   " << x0 << "   estymator:   " << abs(fX0-x0) << "   F(x0):   " << function1(x0) << std::endl;
-    } while ((i < iterCount) && (abs(function1(x0)) > epsilon) && (abs(fX0-x0) > epsilon));
+    } while ((i < iterMax) && (abs(function1(x0)) > epsilon) && (abs(fX0-x0) > epsilon));
 }
 
 void sieczna() {
@@ -124,5 +124,5 @@ void sieczna() {
         x2 = x1 - (function1(x1)/((function1(x1) - function1(x0))/(x1-x0)));
         i++;
         std::cout << i << "   x0:   " << x0 << "   estymator:   " << abs(x2-x1) << "   F(x0):   " << function1(x0) << std::endl;
-    } while ((i < iterCount) && (abs(function1(x0)) > epsilon) && (abs(x2-x1) > epsilon));
+    } while ((i < iterMax) && (abs(function1(x0)) > epsilon) && (abs(x2-x1) > epsilon));
 }
