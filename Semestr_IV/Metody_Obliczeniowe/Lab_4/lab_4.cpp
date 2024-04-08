@@ -3,7 +3,8 @@
 #include <vector>
 #include <cfloat>
 
-const double epsilon = 2.22045e-16;
+const double TOLX = 1e-10;
+const double TOLF = 1e-10;
 int iterMax = 100;
 double est1,est2,est3,estMax,residMax;
 
@@ -17,7 +18,7 @@ double maxValue(double a, double b, double c);
 
 int main() {
     int n = 0;
-    double xn[3] = {10.0, 50.0, 10.0};
+    double xn[3] = {10.0, 20.0, 40.0};
     double xn1[3] = {0.0, 0.0, 0.0};
     double resid[3] = {0.0, 0.0, 0.0};
     
@@ -41,14 +42,14 @@ int main() {
         if (n >= iterMax) {
             std::cout << "Osiagnieto max iteracji (ustawione na:" << iterMax << ")\n" << std::endl;
         }
-        if(estMax <= epsilon) {
+        if(fabs(estMax) <= TOLX) {
             std::cout << "Estymator (Max) przyjal minimala wartosc (mniejsze od epsilona)\n" << std::endl;
         }
-        if(residMax <= epsilon) {
+        if(fabs(residMax) <= TOLF) {
             std::cout << "Osiagnieto maksymalne przyblizenie (residuum)\n" << std::endl;
         }
         n++;
-    } while (n <= iterMax && estMax >= epsilon && residMax >= epsilon);
+    } while (n <= iterMax && (fabs(estMax) >= TOLX && fabs(residMax) >= TOLF));
 
     std::cout << "=================\n      Wynik\n=================\n" << std::endl;
     std::cout << "xn[0]: " << xn[0] << "\t" << "xn[1]: " << xn[1] << "\t" << "xn[3]: " << xn[2] << std::endl;
