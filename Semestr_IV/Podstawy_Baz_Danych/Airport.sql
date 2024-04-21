@@ -12,19 +12,18 @@ cafe_id int(15) primary key,
 coffee_cost int(15),
 tables_count int(15));
 
-
-create table if not exists runway(
-runway_id int(15) primary key,
-runway_number int(15),
-length int(25),
-runway_condition char(15));
-
 create table if not exists parking(
 parking_id int(15) primary key,
 slots_count int(15),
 floor int(15),
 open_hours time,
 cost int(15));
+
+create table if not exists runway(
+runway_id int(15) primary key,
+runway_number int(15),
+length int(25),
+runway_condition char(15));
 
 create table if not exists plane(
 plane_id int(15) primary key,
@@ -60,6 +59,19 @@ create table if not exists worker(
     foreign key (id_plane) references plane (plane_id) on update no action on delete no action,
     foreign key (id_gate) references gate (gate_id) on update no action on delete no action);
 
+insert into airport.parking(parking_id, slots_count, floor, open_hours, cost)
+values 
+('781', '100', '3', '09:30:00', '45'),
+('2985', '200', '2', '00:00:00', '45'),
+('3478', '1000', '7', '00:00:00', '45'),
+('4484', '100', '1', '00:00:00', '45'),
+('5684', '20', '2', '08:00:00', '45'),
+('647', '20', '4', '00:00:00', '45'),
+('7654', '500', '1', '00:00:00', '45'),
+('883', '230', '1', '10:00:00', '45'),
+('9098', '40', '1', '17:30:00', '45'),
+('1055', '100', '6', '00:00:00', '45');
+
 insert into airport.shop(shop_id, product, shop_type, open_hours)
 values 
 ('1', 'water', 'grossery', '09:30:00'),
@@ -86,19 +98,6 @@ values
 ('978', '20', '9'),
 ('190', '20', '34');
 
-insert into airport.plane(plane_id, company, weight, size, pasengers_slots, speed)
-values 
-('111', 'EasyJet', '1000', '50', '10', '500'),
-('224', 'Ryaner', '1000', '50', '103', '500'),
-('5253', 'Ryaner', '2500', '50', '200', '500'),
-('4564', 'LOT', '1000', '50', '200', '500'),
-('1', 'LOT', '1000', '50', '10', '600'),
-('667', 'EasyJet', '3900', '50', '104', '550'),
-('787', 'EasyJet', '1000', '50', '102', '550'),
-('832', 'EasyJet', '9000', '50', '10', '550'),
-('911', 'EasyJet', '8000', '50', '102', '600'),
-('1110', 'Swishair', '200', '50', '10', '750');
-
 insert into airport.runway(runway_id, runway_number, length, runway_condition)
 values 
 ('187', '1', '3000', 'A'),
@@ -112,44 +111,45 @@ values
 ('9115', '9', '3000', 'A'),
 ('1650', '10', '200', 'A');
 
-insert into airport.gate(gate_id, gate_number)
+insert into airport.plane(plane_id, company, weight, size, pasengers_slots, speed, id_runway)
 values 
-('1112', '4'),
-('2334', '4'),
-('356', '5'),
-('487', '5'),
-('1', '3'),
-('698', '3'),
-('7098', '2'),
-('8679', '2'),
-('9447', '1'),
-('1078', '1');
+('111', 'EasyJet', '1000', '50', '10', '500', '187'),
+('224', 'Ryaner', '1000', '50', '103', '500','2998'),
+('5253', 'Ryaner', '2500', '50', '200', '500','3000'),
+('4564', 'LOT', '1000', '50', '200', '500','4989'),
+('1', 'LOT', '1000', '50', '10', '600','54232'),
+('667', 'EasyJet', '3900', '50', '104', '550','6289'),
+('787', 'EasyJet', '1000', '50', '102', '550','762'),
+('832', 'EasyJet', '9000', '50', '10', '550','853'),
+('911', 'EasyJet', '8000', '50', '102', '600','9115'),
+('1110', 'Swishair', '200', '50', '10', '750','1650');
 
-insert into airport.parking(parking_id, slots_count, floor, open_hours, cost)
-values 
-('781', '100', '3', '09:30:00', '45'),
-('2985', '200', '2', '00:00:00', '45'),
-('3478', '1000', '7', '00:00:00', '45'),
-('4484', '100', '1', '00:00:00', '45'),
-('5684', '100', '2', '08:00:00', '45'),
-('647', '100', '4', '00:00:00', '45'),
-('7654', '500', '1', '00:00:00', '45'),
-('883', '230', '1', '10:00:00', '45'),
-('9098', '40', '1', '17:30:00', '45'),
-('1055', '100', '6', '00:00:00', '45');
 
-insert into airport.worker(worker_id, worker_name, age, salary, working_hours, specialization)
+insert into airport.gate(gate_id, gate_number, id_plane)
 values 
-('173', 'Janek', '60', '3500', '09:00:00', 'worker'),
-('25678', 'Pawel', '60', '3500', '00:00:00', 'worker'),
-('353', 'Michał', '35', '34500', '00:00:00', 'worker'),
-('4678', 'Piotr', '25', '3500', '09:00:00', 'worker'),
-('563', 'Janek', '60', '3500', '09:00:00', 'worker'),
-('628', 'Janek', '25', '3500', '09:00:00', 'worker'),
-('757', 'Janek', '35', '3500', '09:30:00', 'worker'),
-('82643', 'Janek', '25', '2500', '09:00:00', 'worker'),
-('9578', 'Janek', '25', '3500', '09:00:00', 'worker'),
-('1052', 'Janek', '11', '53500', '09:00:00', 'worker');
+('1112', '4', '224'),
+('2334', '4', '224'),
+('356', '5', '224'),
+('487', '5', '224'),
+('1', '3', '224'),
+('698', '3', '224'),
+('7098', '2', '911'),
+('8679', '2', '911'),
+('9447', '1', '911'),
+('1078', '1', '911');
+
+insert into airport.worker(worker_id, worker_name, age, salary, working_hours, specialization, id_parking, id_gate, id_shop)
+values 
+('173', 'Janek', '60', '3500', '09:00:00', 'worker', '781', '1', '467'),
+('25678', 'Pawel', '60', '3500', '00:00:00', 'worker', '781', '1', '81'),
+('353', 'Michał', '35', '34500', '00:00:00', 'worker', '781', '7098', '81'),
+('4678', 'Piotr', '25', '3500', '09:00:00', 'worker', '781', '7098', '81'),
+('563', 'Janek', '60', '3500', '09:00:00', 'worker', '781', '7098', '467'),
+('628', 'Janek', '25', '3500', '09:00:00', 'worker', '781', '7098', '467'),
+('757', 'Janek', '35', '3500', '09:30:00', 'worker', '781', '1078', '467'),
+('82643', 'Janek', '25', '2500', '09:00:00', 'worker', '781', '1078', '81'),
+('9578', 'Janek', '25', '3500', '09:00:00', 'worker', '781', '1078', '81'),
+('1052', 'Janek', '11', '53500', '09:00:00', 'worker', '781', '1078', '81');
 
 select * from airport.worker;
 select * from airport.plane;

@@ -1,23 +1,27 @@
 USE Airport;
 
-SELECT *
+SELECT tables_count, coffee_cost
 FROM cafe
-GROUP BY cafe_id
+GROUP BY tables_count, coffee_cost
 HAVING coffee_cost > 10;
 
-SELECT *
+SELECT id_plane, gate_number
 FROM gate
+GROUP BY id_plane, gate_number
 HAVING gate_number < 3;
 
-SELECT *
+SELECT runway_number, length
 FROM runway
+GROUP BY runway_number, length
 HAVING length > 200 AND length < 10000;
+
 
 SELECT parking_id, floor
 FROM parking
+GROUP BY parking_id, floor
 HAVING floor = 1;
 
-SELECT worker_id, worker_name, age
+SELECT worker_name, age
 FROM worker
-GROUP BY worker_id
+GROUP BY worker_name, age
 HAVING age > 30;
