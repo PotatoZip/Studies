@@ -3,8 +3,8 @@
 #include <vector>
 #include <cfloat>
 
-const double TOLX = 1e-10;
-const double TOLF = 1e-10;
+const double TOLX = 1e-8;
+const double TOLF = 1e-8;
 int iterMax = 100;
 double est1,est2,est3,estMax,residMax;
 

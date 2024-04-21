@@ -51,7 +51,7 @@ void picard(double (*fun)(double), double (*funFi)(double), double (*funFiDx)(do
         i++;
 
         std::cout << i << "   x0:   " << x0 << "   estymator:   " << fabs(fiX0 - x0) << "   Reziuduum:   " << fabs(fun(x0)) << std::endl;
-    } while ((i < iterMax) && ((fabs(fun(x0) - fun(fiX0)) > TOLF) && (fabs(fiX0 - x0) > TOLX)));
+    } while ((i < iterMax) && ((fabs(fun(x0)) > TOLF) && (fabs(fiX0 - x0) > TOLX)));
 
     if (fabs(funFiDx(x0)) > 1) {
         std::cout << "Metoda jest rozbiezna" << std::endl;
@@ -116,7 +116,7 @@ void newton(double (*fun)(double), double (*funDx)(double)) {
         fX0 = x0 - (fun(x0)/funDx(x0));
         i++;
         std::cout << i << "   x0:   " << x0 << "   estymator:   " << fabs(fX0-x0) << "   Reziduum:   " << fabs(fun(x0)) << std::endl;
-    } while ((i < iterMax) && ((fabs(fun(x0) - fun(fX0)) > TOLF) && (fabs(fX0-x0) > TOLX)));
+    } while ((i < iterMax) && ((fabs(fun(x0)) > TOLF) && (fabs(fX0-x0) > TOLX)));
 }
 
 void sieczna(double (*fun)(double)) {
@@ -136,5 +136,5 @@ void sieczna(double (*fun)(double)) {
         x2 = x1 - (fun(x1)/((fun(x1) - fun(x0))/(x1-x0)));
         i++;
         std::cout << i << "   x0:   " << x0 << "   estymator:   " << fabs(x2-x1) << "   Reziduum:   " << fabs(fun(x0)) << std::endl;
-    } while ((i < iterMax) && ((fabs(fun(x0) - fun(x1)) > TOLF) && (fabs(x2-x1) > TOLX)));
+    } while ((i < iterMax) && ((fabs(fun(x0)) > TOLF) && (fabs(x2-x1) > TOLX)));
 }
