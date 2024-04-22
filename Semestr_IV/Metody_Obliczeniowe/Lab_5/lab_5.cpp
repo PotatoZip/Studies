@@ -1,28 +1,27 @@
 #include <iostream>
 #include <math.h>
-#include <vector>
+#include <iomanip>
 
 #define N 4
 
-std::vector<std::vector<double>> matrixA = {
-    {1.0, -20.0, 30.0, -4.0},
-    {2.0, -40.0, -6.0, 50.0},
-    {9.0, -180.0, 11.0, -12.0},
-    {-16.0, 15.0, -140.0, 13.0}
+double matrixA[N][N] = {
+    1.0, -20.0, 30.0, -4.0,
+    2.0, -40.0, -6.0, 50.0,
+    9.0, -180.0, 11.0, -12.0,
+    -16.0, 15.0, -140.0, 13.0
 };
 
-std::vector<double> vectorB = {35.0, 104.0, -366.0, -354.0};
-std::vector<int> indx = {0, 1, 2, 3};
+double vectorB[N] = {35.0, 104.0, -366.0, -354.0};
+double indx[N] = {0, 1, 2, 3};
 
-std::vector<std::vector<double>> matrixL(N, std::vector<double>(N, 0));
-std::vector<std::vector<double>> matrixU(N, std::vector<double>(N, 0));
+double matrixL[N][N];
 double x[N];
 double y[N];
 
-void printMatrix(std::vector<std::vector<double>> matrix);
-void printVector(std::vector<double> vec);
-void gauss(std::vector<std::vector<double>> matrixA, std::vector<std::vector<double>> matrixL, int i);
-void swap(std::vector<std::vector<double>> matrixA, std::vector<std::vector<double>> matrixL, std::vector<int> tmpVector, int i);
+void printMatrix(double matrix[N][N]);
+void printVector(double vec[N]);
+void gauss(double matrixA[N][N], double matrixL[N][N], int i);
+void swap(double matrixA[N][N], double matrixL[N][N], double tmpVector[N], int i);
 void decompositionLU();
 void solve();
 
@@ -38,8 +37,13 @@ void decompositionLU() {
         matrixL[i][i] = 1.0;
     }
 
+    printMatrix(matrixA);
+    printVector(vectorB);
+
     for (int i = 0; i < N; i++) {
         if (matrixA[i][i] == 0) {
+            std::cout << "Wykryto 0!" << std::endl;
+            printMatrix(matrixA);
             swap(matrixA, matrixL, indx, i);
         }
         gauss(matrixA, matrixL, i);
@@ -47,6 +51,12 @@ void decompositionLU() {
 }
 
 void solve() {
+
+    printMatrix(matrixA);
+    printVector(vectorB);
+
+    //
+
     int tmp;
     double tmpVector[N];
 
@@ -78,12 +88,11 @@ void solve() {
         x[i] = (y[i] - sum) / matrixA[i][i];
     }
 
-    printMatrix(matrixA);
-    printMatrix(matrixL);
-    printMatrix(matrixU);
+    printVector(y);
+    printVector(x);
 }
 
-void gauss(std::vector<std::vector<double>> matrixA, std::vector<std::vector<double>> matrixL, int i) {
+void gauss(double matrixA[N][N], double matrixL[N][N], int i) {
     double tmp;
     for (int j = i + 1; j < N; j++) {
         if (matrixA[j][i] == 0.0) {
@@ -98,9 +107,9 @@ void gauss(std::vector<std::vector<double>> matrixA, std::vector<std::vector<dou
     }
 }
 
-void swap(std::vector<std::vector<double>> matrixA, std::vector<std::vector<double>> matrixL, std::vector<int> tmpVector, int i) {
-    std::vector<double> tmpA;
-    int vec;
+void swap(double matrixA[N][N], double matrixL[N][N], double vecHelp[N], int i) {
+    double tmpA[N];
+    int tmpVector;
     int maxIdx;
     double maxInRow = 0.0;
 
@@ -117,9 +126,9 @@ void swap(std::vector<std::vector<double>> matrixA, std::vector<std::vector<doub
         matrixA[i][j] = tmpA[j];
     }
 
-    vec = tmpVector[i];
-    tmpVector[i] = tmpVector[maxIdx];
-    tmpVector[maxIdx] = vec;
+    tmpVector = vecHelp[i];
+    vecHelp[i] = vecHelp[maxIdx];
+    vecHelp[maxIdx] = tmpVector;
 
     for (int j = 0; j < i; j++) {
         tmpA[j] = matrixL[maxIdx][j];
@@ -128,7 +137,7 @@ void swap(std::vector<std::vector<double>> matrixA, std::vector<std::vector<doub
     }
 }
 
-void printMatrix(std::vector<std::vector<double>> matrix) {
+void printMatrix(double matrix[N][N]) {
     std::cout << "==========================" << std::endl;
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
@@ -139,10 +148,10 @@ void printMatrix(std::vector<std::vector<double>> matrix) {
     std::cout << "==========================" << std::endl;
 }
 
-void printVector(std::vector<double> vec) {
-    std::cout << "=============" << std::endl;
+void printVector(double vec[N]) {
+    std::cout << "==========================" << std::endl;
     for (int i = 0; i < N; i++) {
-        std::cout << vec[i] << " ";
+        std::cout << vec[i] << "\t";
     }
-    std::cout << "=============" << std::endl;
+    std::cout << "\n==========================" << std::endl;
 }
