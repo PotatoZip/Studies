@@ -36,13 +36,14 @@ void decompositionLU() {
     for (int i = 0; i < N; i++) {
         matrixL[i][i] = 1.0;
     }
-
+    std::cout << "Macierz A:" << std::endl;
     printMatrix(matrixA);
+    std::cout << "Wektor B:" << std::endl;
     printVector(vectorB);
 
     for (int i = 0; i < N; i++) {
         if (matrixA[i][i] == 0) {
-            std::cout << "Wykryto 0!" << std::endl;
+            std::cout << "Wykryto 0 w macierzy A!" << std::endl;
             printMatrix(matrixA);
             swap(matrixA, matrixL, indx, i);
         }
@@ -52,7 +53,10 @@ void decompositionLU() {
 
 void solve() {
 
+    std::cout << "Po eliminacji Gaussa\n" << std::endl;
+    std::cout << "Macierz A:" << std::endl;
     printMatrix(matrixA);
+    std::cout << "Wektor B:" << std::endl;
     printVector(vectorB);
 
     //
@@ -68,27 +72,40 @@ void solve() {
         vectorB[i] = tmpVector[tmp];
     }
 
+    std::cout << "Wektor B po zmianie kolejnosci:" << std::endl;
+    printVector(vectorB);
+
     //
 
     for (int i = 0; i < N; i++) {
-        double sum = 0.0;
-        for (int j = 0; j <= i - 1; j++) {
-            sum += matrixL[i][j] * y[j];
+        for (size_t i = 0; i < N; i++) {
+            y[i] = vectorB[i];
         }
-        y[i] = vectorB[i] - sum;
+
+        for (int k = 1; k < N; ++k) {
+            for (int i = k; i < N; ++i) {
+                y[i] -= y[k - 1] * matrixL[i][k - 1];
+            }
+        }
     }
 
     //
 
     for (int i = N - 1; i >= 0; i--) {
-        double sum = 0.0;
-        for (int j = i+1; j < N; j++) {
-            sum += matrixL[i][j] * x[j];
+        x[N - 1] = y[N - 1] / matrixA[N - 1][N - 1];
+        double suma;
+        for (int i = N - 2; i >= 0; i--) {
+            suma = 0.0;
+            for (int k = N - 1; k > i; k--) {
+                suma = suma + x[k] * matrixA[i][k];
+            }
+            x[i] = (y[i] - suma) / matrixA[i][i];
         }
-        x[i] = (y[i] - sum) / matrixA[i][i];
     }
 
+    std::cout << "Wektor Y:" << std::endl;
     printVector(y);
+    std::cout << "Wektor X:" << std::endl;
     printVector(x);
 }
 

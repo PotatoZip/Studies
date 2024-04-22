@@ -14,6 +14,7 @@ void thomas();
 void solution();
 
 int main() {
+    std::cout.precision(5);
     thomas();
     std::cout << "Przekatna po przeksztalceniu: " << std::endl;
     for (int i = 0; i < N; i++) {
