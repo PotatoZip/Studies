@@ -1,26 +1,26 @@
 USE Airport;
 
-SELECT plane_id, company
+SELECT plane.company, runway.runway_condition
 FROM plane
-RIGHT JOIN  gate
-on gate.gate_id = plane.plane_id;
+INNER JOIN runway
+ON plane.id_runway = runway.runway_id;
 
-SELECT parking_id, open_hours
+SELECT parking.open_hours, worker.working_hours
 FROM parking
 RIGHT JOIN worker
-on worker.working_hours = parking.open_hours;
+on worker.id_parking = parking.parking_id;
 
-SELECT plane_id, pasengers_slots
-FROM plane
-RIGHT JOIN parking
-on parking.slots_count = plane.pasengers_slots;
+SELECT gate.gate_number, plane.company
+FROM gate
+RIGHT JOIN plane
+on gate.id_plane = plane.plane_id;
 
-SELECT runway_id, runway_number
-FROM runway
+SELECT worker.salary, gate.gate_number
+FROM worker
 LEFT JOIN gate
-on runway.runway_number = gate.gate_number;
+on worker.id_gate = gate.gate_id;
 
-SELECT *
+SELECT shop.product, worker.salary
 FROM shop
-LEFT JOIN worker
-on shop.open_hours > worker.working_hours;
+RIGHT JOIN worker
+on worker.id_shop = shop.shop_id;
