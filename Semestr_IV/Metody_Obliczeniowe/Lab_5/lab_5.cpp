@@ -25,7 +25,7 @@ void swap(double matrixA[N][N], double matrixL[N][N], double tmpVector[N], int i
 void decompositionLU();
 void solve();
 
-int main() {
+int main(int argc, const char *argv[]) {
     decompositionLU();
     solve();    
 
