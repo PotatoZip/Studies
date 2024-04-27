@@ -16,13 +16,15 @@ void solution();
 int main() {
     std::cout.precision(5);
     thomas();
-    std::cout << "Przekatna po przeksztalceniu: " << std::endl;
-    for (int i = 0; i < N; i++) {
-        std::cout << D[i] << " ";
-    }
-    std::cout << std::endl;
-    std::cout << std::endl;
+    
     solution();
+    for(int i = 0; i < N; i++) {
+        std::cout << "B" << i << " = " << B[i] << std::endl;
+    }
+
+    std::cout << std::endl;
+    std::cout << std::endl;
+
     for(int i = 0; i < N; i++) {
         std::cout << "X" << i << " = " << X[i] << std::endl;
     }

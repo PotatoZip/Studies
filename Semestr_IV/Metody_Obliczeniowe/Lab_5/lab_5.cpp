@@ -33,7 +33,9 @@ int main(int argc, const char *argv[]) {
 }
 
 void decompositionLU() {
-    for (int i = 0; i < N; i++) {
+
+    //Uzupelnia macierz L jedynkami
+        for (int i = 0; i < N; i++) {
         matrixL[i][i] = 1.0;
     }
     std::cout << "Macierz A:" << std::endl;
@@ -59,7 +61,7 @@ void solve() {
     std::cout << "Wektor B:" << std::endl;
     printVector(vectorB);
 
-    //
+    //zamieniamy kolejnosc w wektorze B
 
     int tmp;
     double tmpVector[N];
@@ -75,7 +77,7 @@ void solve() {
     std::cout << "Wektor B po zmianie kolejnosci:" << std::endl;
     printVector(vectorB);
 
-    //
+    //Rozwiazujemy Y
 
     for (int i = 0; i < N; i++) {
         for (size_t i = 0; i < N; i++) {
@@ -89,7 +91,7 @@ void solve() {
         }
     }
 
-    //
+    //Rozwiazujemy X
 
     for (int i = N - 1; i >= 0; i--) {
         x[N - 1] = y[N - 1] / matrixA[N - 1][N - 1];
