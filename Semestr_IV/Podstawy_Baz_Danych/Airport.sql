@@ -151,5 +151,42 @@ values
 ('9578', 'Janek', '25', '3500', '09:00:00', 'worker', '781', '1078', '81'),
 ('1052', 'Janek', '11', '53500', '09:00:00', 'worker', '781', '1078', '81');
 
-select * from airport.worker;
-select * from airport.plane;
+-- RANG
+ALTER TABLE worker
+PARTITION BY RANGE (worker_id) (
+	PARTITION p0 VALUES LESS THAN (200),
+    PARTITION p1 VALUES LESS THAN (400),
+    PARTITION p2 VALUES LESS THAN (MAXVALUE)
+);
+
+ALTER TABLE parking
+PARTITION BY RANGE (parking_id) (
+	PARTITION p0 VALUES LESS THAN (200),
+    PARTITION p1 VALUES LESS THAN (400),
+    PARTITION p2 VALUES LESS THAN (MAXVALUE)
+);
+
+-- LIST
+ALTER TABLE worker
+PARTITION BY LIST (worker_id) (
+	PARTITION p0 VALUES IN (1, 2),
+    PARTITION p1 VALUES IN (3, 4),
+    PARTITION p2 VALUES IN (5, 6)
+);
+
+ALTER TABLE parking
+PARTITION BY LIST (parking_id) (
+	PARTITION p0 VALUES IN (1, 2),
+    PARTITION p1 VALUES IN (3, 4),
+    PARTITION p2 VALUES IN (5, 6)
+);
+
+-- HASH
+ALTER TABLE worker
+PARTITION BY HASH (worker_id) PARTITIONS 4;
+
+ALTER TABLE parking
+PARTITION BY RANGE (parking_id) PARTITIONS 4;
+
+SELECT * FROM worker PARTITION(p0);
+SELECT * FROM parking PARTITION(p2);
