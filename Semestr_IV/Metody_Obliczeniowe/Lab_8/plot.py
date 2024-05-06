@@ -4,7 +4,7 @@ import numpy
 log10h,progresywna_srodek,wsteczna_srodek,centralna_srodek = [],[],[],[]
 progresywna_poczatek,wsteczna_koniec = [],[]
 progresywna3_poczatek,wsteczna3_koniec = [],[]
-with open('floatSolution.txt') as f:
+with open('wynikfloat.txt') as f:
     for i, line in enumerate(f):
         index = i % 8
         value = float(line.strip())  
@@ -40,7 +40,7 @@ plt.plot(log10h, wsteczna_koniec, label='wsteczna koncowa', linestyle='', marker
 plt.plot(log10h, progresywna3_poczatek, label='progresywna poczatkowa 3', linestyle='', marker='o', markersize=5)
 plt.plot(log10h, wsteczna3_koniec, label='wsteczna koncowa 3', linestyle='', marker='o', markersize=5)
 
-plt.title('Wykres Float')
+plt.title('Wykres Double')
 
 plt.xlabel('log10(h)')
 plt.ylabel('log10(blad)')
