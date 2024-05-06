@@ -8,7 +8,7 @@
 std::vector<std::vector<double>> matrixA = {
     {100.0, -1.0, 2.0, -3.0},
     {1.0, 200.0, -4.0, 5.0},
-    {-2.0, 4.0, 300.0, 6.0},
+    {-2.0, 4.0, 300.0, -6.0},
     {3.0, -5.0, 6.0, 400.0}
 }; 
 
@@ -24,6 +24,7 @@ void printVector(std::vector<double> vector);
 void printMatrix(std::vector<std::vector<double>> matrix);
 
 int main() {
+    //std::cout.precision(5);
     jacobie();
     for (int i = 0; i < N; i++) { vectorX[i] = 2.0; }
     gaussSeidel();
@@ -65,9 +66,9 @@ void jacobie() {
         for (int j = 0; j < N; j++) {
             std::cout << std::setw(10) << vectorX[j];
         }
-        std::cout << std::setw(20) << "Estymator: " << estymator(vectorU, vectorX);
-        std::cout << std::setw(20) << "Residuum: " << residuum(vectorU, vectorB) << std::endl;
-        if (estymator(vectorU, vectorX) < tolX || residuum(vectorU, vectorB) < tolF) { break; }
+        std::cout << std::setw(20) << "Estymator: " << std::setprecision(6) << std::fixed << estymator(vectorU, vectorX);
+        std::cout << std::setw(20) << "Residuum: " << std::setprecision(6) << std::fixed << residuum(vectorU, vectorB) << std::endl;
+        if (estymator(vectorU, vectorX) < tolX && residuum(vectorU, vectorB) < tolF) { break; }
         for (int j = 0; j < N; j++) { vectorX[j] = vectorU[j];}
     }
 }
@@ -99,7 +100,7 @@ void gaussSeidel() {
         }
         std::cout << std::setw(20) << "Estymator: " << estymator(vectorU, vectorX);
         std::cout << std::setw(20) << "Residuum: " << residuum(vectorX, vectorB) << std::endl;
-        if (estymator(vectorX, vectorU) < tolX || residuum(vectorX, vectorB) < tolF) { break; }
+        if (estymator(vectorX, vectorU) < tolX && residuum(vectorX, vectorB) < tolF) { break; }
     }
 }
 
@@ -131,7 +132,7 @@ void sor() {
         }
         std::cout << std::setw(20) << "Estymator: " << estymator(vectorU, vectorX);
         std::cout << std::setw(20) << "Residuum: " << residuum(vectorX, vectorB) << std::endl;
-        if (estymator(vectorX, vectorU) < tolX || residuum(vectorX, vectorB) < tolF) { break; }
+        if (estymator(vectorX, vectorU) < tolX && residuum(vectorX, vectorB) < tolF) { break; }
     }
 }
 

@@ -31,13 +31,13 @@ T progresywna3(T x, T h) {
 }
 
 template <typename T>
-T wsteczna3(T x, T h) {
+T forwardDifference3Point(T x, T h) {
     return ((static_cast<T>(1.0) / static_cast<T>(2.0) * sin(x - h - h))
         - (static_cast<T>(2.0) * sin(x - h))
         + (static_cast<T>(3.0) / static_cast<T>(2.0) * sin(x))) / h;
 }
 template <typename T>
-void oblicz_metody(T poczatek, T srodek, T koniec, T h, vector<T>& wyniki) {
+void calculate2(T poczatek, T srodek, T koniec, T h, vector<T>& wyniki) {
     wyniki.push_back(log10(h));
 
     //dwupunktowe w wezlach wewnetrznych
@@ -49,7 +49,7 @@ void oblicz_metody(T poczatek, T srodek, T koniec, T h, vector<T>& wyniki) {
     wyniki.push_back(log10(abs(wsteczna(koniec, h) - cos(koniec))));
     //trzypunktowe w wezlach koncowych
     wyniki.push_back(log10(abs(progresywna3(poczatek, h) - cos(poczatek))));
-    wyniki.push_back(log10(abs(wsteczna3(koniec, h) - cos(koniec))));
+    wyniki.push_back(log10(abs(forwardDifference3Point(koniec, h) - cos(koniec))));
 }
 
 template <typename T>
@@ -66,10 +66,10 @@ void oblicz(string nazwaPliku,bool typ) {
     for (int i = 0; i < 180; i++) {
         if(h<10e-15 && !typ) break;
         if(h<10e-7 && typ) break;
-        if (i == 0) oblicz_metody(poczatek, srodek, koniec, h, rzedydokladnosci1);
-        if (i == 6) oblicz_metody(poczatek, srodek, koniec, h, rzedydokladnosci7);
+        if (i == 0) calculate2(poczatek, srodek, koniec, h, rzedydokladnosci1);
+        if (i == 6) calculate2(poczatek, srodek, koniec, h, rzedydokladnosci7);
 		
-        oblicz_metody(poczatek, srodek, koniec, h, wyniki);
+        calculate2(poczatek, srodek, koniec, h, wyniki);
 
         h = h / static_cast<T>(1.2);
     }
