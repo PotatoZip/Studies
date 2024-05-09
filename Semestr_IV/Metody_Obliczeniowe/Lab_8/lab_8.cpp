@@ -17,17 +17,6 @@ template <typename T>
 T forwardDifference3Point(T x, T h) { return (-static_cast<T>(3.0) / static_cast<T>(2.0) * sin(x) + static_cast<T>(2.0) * sin(x + h) - static_cast<T>(1.0) / static_cast<T>(2.0) * sin(x + h +h)) / h; }
 template <typename T>
 T backwardDifference3Point(T x, T h) { return ((static_cast<T>(1.0) / static_cast<T>(2.0) * sin(x - h - h)) - (static_cast<T>(2.0) * sin(x - h)) + (static_cast<T>(3.0) / static_cast<T>(2.0) * sin(x))) / h; }
-template <typename T>
-void calculate2(T startPoint, T centerPoint, T endPoint, T h, std::vector<T>& solution) {
-    solution.push_back(log10(h));
-    solution.push_back(log10(abs(forwardDifference(centerPoint, h) - cos(centerPoint))));
-    solution.push_back(log10(abs(backwardDifference(centerPoint, h) - cos(centerPoint))));
-    solution.push_back(log10(abs(centralDifference(centerPoint, h) - cos(centerPoint))));
-    solution.push_back(log10(abs(forwardDifference(startPoint, h) - cos(startPoint))));
-    solution.push_back(log10(abs(backwardDifference(endPoint, h) - cos(endPoint))));
-    solution.push_back(log10(abs(forwardDifference3Point(startPoint, h) - cos(startPoint))));
-    solution.push_back(log10(abs(forwardDifference3Point(endPoint, h) - cos(endPoint))));
-}
 
 template <typename T>
 void calculate(std::string fileName, bool typ) {
