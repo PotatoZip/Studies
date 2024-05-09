@@ -5,7 +5,7 @@ SET GLOBAL event_scheduler = ON;
 
 create table if not exists parking3(
 parking_id int primary key auto_increment,
-hello_message varchar(15),
+hello_message varchar(100),
 created_at datetime);
 
 -- zdarzenie jednorazowe usuwane po wykonaniu
