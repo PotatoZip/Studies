@@ -1,4 +1,4 @@
-drop database airport4;
+-- drop database airport4;
 create database if not exists airport4;
 use airport4;
 
@@ -45,10 +45,16 @@ values
 
 -- alter table runway add index runway_index(runway_condition, length);
 
-explain select runway_id, runway_condition from runway
-where length > 3000;
+-- explain select runway_id, runway_condition from runway
+-- where length > 3000;
+
+
 
 -- alter table runway add index runway_index(runway_condition, length);
 
--- explain select plane_id, size, speed from plane
--- where company in ('EasyJet', 'LOT') and speed > 500;
+select @avgSpeed := avg(speed) from plane;
+select plane_id, size, speed from plane
+where company in ('EasyJet', 'LOT') and speed > @avgSpeed;
+
+explain select * from plane
+where company in ('EasyJet', 'LOT') and speed > @avgSpeed;
