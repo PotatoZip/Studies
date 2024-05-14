@@ -43,18 +43,15 @@ values
 ('911', 'EasyJet', '8000', '50', '102', '600','9115'),
 ('1110', 'Swishair', '200', '50', '10', '750','1650');
 
--- alter table runway add index runway_index(runway_condition, length);
-
--- explain select runway_id, runway_condition from runway
--- where length > 3000;
-
-
+alter table runway add index runway_index(length);
+explain select runway_id, runway_condition from runway
+where length > 3000;
 
 -- alter table runway add index runway_index(runway_condition, length);
 
-select @avgSpeed := avg(speed) from plane;
-select plane_id, size, speed from plane
-where company in ('EasyJet', 'LOT') and speed > @avgSpeed;
+-- select @avgSpeed := avg(speed) from plane;
+-- select plane_id, size, speed from plane
+-- where company in ('EasyJet', 'LOT') and speed > @avgSpeed;
 
 explain select * from plane
 where company in ('EasyJet', 'LOT') and speed > @avgSpeed;
