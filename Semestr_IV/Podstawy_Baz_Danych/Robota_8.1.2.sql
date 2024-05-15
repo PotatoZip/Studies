@@ -37,5 +37,5 @@ values
 select @junk as 'Total junk', @potentialPassengers as 'Total potential passengers'; 
 
 set @sum=0;
-insert into airport.plane(plane_id, company, weight, size, pasengers_slots, speed) values ('911', 'EasyJet', '8000', '50', '102', '600');
+insert into airport5.plane(plane_id, company, weight, size, pasengers_slots, speed) values ('91', 'EasyJet', '8000', '50', '102', '600');
 select @sum as 'Total amount inserted';
