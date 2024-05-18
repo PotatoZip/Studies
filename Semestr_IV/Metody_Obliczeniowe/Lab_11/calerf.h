@@ -5,10 +5,10 @@
 
 namespace calerfpack
 {
-long double calerf_l(const long double arg, const int jint);
-long double erf_l(const long double x);
-long double erfc_l(const long double x);
-long double erex_l(const long double x);
+long double calerf_L(const long double arg, const int jint);
+long double erf_L(const long double x);
+long double erfc_L(const long double x);
+long double erex_L(const long double x);
 };
 // -----------------------------------------------
 

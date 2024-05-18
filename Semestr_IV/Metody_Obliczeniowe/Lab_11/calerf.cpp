@@ -1,8 +1,8 @@
 
-#include <math.h>
-#include <iostream>
+#include "math.h"
+#include "iostream"
 
-
+#include "utilit.h"
 
 #include "calerf.h"
 
@@ -27,37 +27,37 @@ else return ceill(x);
 ////////////////////////
 
 
-long double  calerfpack::calerf_l(const long double arg, const int jint)
+long double  calerfpack::calerf_L(const long double arg, const int jint)
 {
 //-----------------------------------------------------------------
 //
 //  This packet evaluates erf(x), erfc(x), and exp(x*x)*erfc(x)
 //  for a real argument x.  It contains four long double functions:
-//  erf_l(), erfc_l(), and erex_l(), and calerf_l().
+//  erf_L(), erfc_L(), and erex_L(), and calerf_L().
 //
 //  The calling statements for the primary entries are:
 //
-//         y = erf_l(x),
+//         y = erf_L(x),
 //
-//         y = erfc_l(x),
+//         y = erfc_L(x),
 //  and
-//         y = erex_l(x).
+//         y = erex_L(x).
 //
-//  The function calerf_l() is intended for internal packet use only,
+//  The function calerf_L() is intended for internal packet use only,
 //  all computations within the packet being concentrated in this
-//  routine. The functions invoke calerf_l() with the
+//  routine. The functions invoke calerf_L() with the
 //  statement
 //
-//         calerf_l(arg,jint)
+//         calerf_L(arg,jint)
 //
 //  where the parameter usage is as follows
 //
-//      Function                     Parameters for calerf_l()
+//      Function                     Parameters for calerf_L()
 //       call       l       arg            jint
 //
-//     erf_l(arg)     ANY REAL ARGUMENT      0
-//     erfc_l(arg)    fabs(arg)  < XBIG      1
-//     erex_l(arg)    XNEG < arg < XMAX      2
+//     erf_L(arg)     ANY REAL ARGUMENT      0
+//     erfc_L(arg)    fabs(arg)  < XBIG      1
+//     erex_L(arg)    XNEG < arg < XMAX      2
 //
 //  The main computation evaluates near-minimax approximations
 //  from "Rational Chebyshev approximations for the error function"
@@ -74,20 +74,20 @@ long double  calerfpack::calerf_l(const long double arg, const int jint)
 //
 //   XMIN   = the smallest positive floating-point number.
 //   XINF   = the largest positive finite floating-point number.
-//   XNEG   = the largest negative argument acceptable to erex_l();
+//   XNEG   = the largest negative argument acceptable to erex_L();
 //            the negative of the solution to the equation
 //            2*exp(x*x) = XINF.
 //   XSMALL = argument below which erf(x) may be represented by
 //            2*x/sqrt(pi) and above which  x*x  will not underflow.
 //            A conservative value is the largest machine number x
 //            such that   1.0 + x = 1.0   to machine precision.
-//   XBIG   = largest argument acceptable to erfc_l();  solution to
+//   XBIG   = largest argument acceptable to erfc_L();  solution to
 //            the equation:  W(x) * (1-0.5/x**2) = XMIN,  where
 //            W(x) = exp(-x*x)/[x*sqrt(pi)].
 //   XHUGE  = argument above which  1.0 - 1/(2*x*x) = 1.0  to
 //            machine precision.  A conservative value is
 //            1/[2*sqrt(XSMALL)]
-//   XMAX   = largest acceptable argument to erex_l(); the minimum
+//   XMAX   = largest acceptable argument to erex_L(); the minimum
 //            of XINF and 1/[sqrt(pi)*XMIN].
 //
 //  Approximate values for some important machines are:
@@ -338,15 +338,15 @@ return result;
 
 
 
-long double  calerfpack::erf_l(const long double x)
+long double  calerfpack::erf_L(const long double x)
 {
 //-------------------------------------------------------------------
 //  This function computes approximate values for erf(x).
-//  (see comments heading calerf_l()).
+//  (see comments heading calerf_L()).
 //
 //  Based on the netlib package by W. J. Cody, January 8, 1985
 //-------------------------------------------------------------------
-return  calerfpack::calerf_l(x,0);
+return  calerfpack::calerf_L(x,0);
 }
 
 
@@ -354,31 +354,31 @@ return  calerfpack::calerf_l(x,0);
 
 
 
-long double  calerfpack::erfc_l(const long double x)
+long double  calerfpack::erfc_L(const long double x)
 {
 //-------------------------------------------------------------------
 //  This function computes approximate values for erfc(x).
-//  (see comments heading calerf_l()).
+//  (see comments heading calerf_L()).
 //
 //  Based on the netlib package by W. J. Cody, January 8, 1985
 //-------------------------------------------------------------------
-return  calerfpack::calerf_l(x,1);
+return  calerfpack::calerf_L(x,1);
 }
 
 
 
 
 
-long double  calerfpack::erex_l(const long double x)
+long double  calerfpack::erex_L(const long double x)
 {
 //-----------------------------------------------------------------
 //  This function computes approximate values for
 //  exp(x*x) * erfc(x).
-//  (see comments heading calerf_l()).
+//  (see comments heading calerf_L()).
 //
 //  Based on the netlib package by W. J. Cody, March 30, 1987
 //-----------------------------------------------------------------
-return  calerfpack::calerf_l(x,2);
+return  calerfpack::calerf_L(x,2);
 }
 
 

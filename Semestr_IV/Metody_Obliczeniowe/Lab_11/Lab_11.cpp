@@ -19,6 +19,7 @@ void saveVector(std::vector<double> vector, int n, const std::string& fileName);
 void saveMatrix(std::vector<std::vector<double>> matrix, int n, int m, const std::string& fileName);
 double dtValue(double lambda, double h, double d);
 double erfcValue(double x, double t);
+double dokladnyPomiar(double x, double t);
 void warunekPoczatkowy(std::vector<std::vector<double>> &matrix, int m);
 void warunekBrzegowy(std::vector<std::vector<double>> &matrix, int n, int m);
 
@@ -28,6 +29,7 @@ int main() {
 
 double erfcValue(double x, double t) { return erfc((x) / (2.0*sqrt(D*t)))/2.0; }
 double dtValue(double lambda, double h, double d) { return (lambda*h*h) / d; }
+double dokladnyPomiar(double x, double t) { return calerf::ERFCL(x / (2.0*sqrt(D*t)))/2.0; }
 
 void warunekPoczatkowy(std::vector<std::vector<double>> &matrix, int m) {
     double x = X_MIN;
