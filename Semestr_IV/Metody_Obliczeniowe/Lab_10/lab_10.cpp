@@ -114,7 +114,7 @@ int main() {
     }
     out_s.close();
     out_ns.open("unstable.txt", std::fstream::out);
-    for (double t = 0; t < 1; t += 0.01) {
+    for (double t = 0; t < 10; t += 0.01) {
         rozwAnalityczne = analiticSolution(t);
         euler_b = bme(0.2, t);
         out_ns << std::setw(dl_) << t << std::setw(dl_) << rozwAnalityczne << std::setw(dl_) << euler_b << std::endl;
