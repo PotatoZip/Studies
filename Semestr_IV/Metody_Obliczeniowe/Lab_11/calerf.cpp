@@ -2,8 +2,6 @@
 #include "math.h"
 #include "iostream"
 
-#include "utilit.h"
-
 #include "calerf.h"
 
 using namespace std;
@@ -156,7 +154,7 @@ static const long double XNEG   = -26.628e0L;
 static const long double XSMALL =  1.11e-16L; 
 static const long double XBIG   =  26.543e0L;
 static const long double XHUGE  =  1.0e10L;    // 6.71e7L;    // Modified by L. K. Bieniasz
-static const long double XMAX   =  0.5e2466L;  // 2.53e307L;  // Modified by L.K. Bieniasz
+static const long double XMAX   =  2.53e307L; // 0.5e2466L;  // 2.53e307L;  // Modified by L.K. Bieniasz
 
 //-----------------------------------------------------------------
 //  Coefficients for approximation to  erf  in first interval

@@ -1,6 +1,0 @@
-﻿  Lab_11_visual_studio.cpp
-C:\Users\ziggs\Desktop\Studies\Semestr_IV\Metody_Obliczeniowe\Lab_11_visual_studio\Lab_11_visual_studio\Lab_11_visual_studio.cpp(47,11): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\ziggs\Desktop\Studies\Semestr_IV\Metody_Obliczeniowe\Lab_11_visual_studio\Lab_11_visual_studio\Lab_11_visual_studio.cpp(48,11): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\ziggs\Desktop\Studies\Semestr_IV\Metody_Obliczeniowe\Lab_11_visual_studio\Lab_11_visual_studio\Lab_11_visual_studio.cpp(59,11): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\ziggs\Desktop\Studies\Semestr_IV\Metody_Obliczeniowe\Lab_11_visual_studio\Lab_11_visual_studio\Lab_11_visual_studio.cpp(60,11): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  Lab_11_visual_studio.vcxproj -> C:\Users\ziggs\Desktop\Studies\Semestr_IV\Metody_Obliczeniowe\Lab_11_visual_studio\x64\Debug\Lab_11_visual_studio.exe
