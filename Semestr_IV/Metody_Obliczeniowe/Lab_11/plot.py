@@ -1,56 +1,104 @@
-import numpy as np
+# Zadanie 1
+
 import matplotlib.pyplot as plt
 
-# Funkcja do wczytania danych dla osi X
-def load_x_data(filename):
-    with open(filename, 'r') as file:
-        x_data = np.loadtxt(file)
-    return x_data
+# Wczytywanie danych z pliku do osi X
+with open('errors_h.txt', 'r') as file:
+    x_data = file.read().splitlines()
 
-# Funkcja do wczytania danych dla osi Y
-def load_y_data(filename):
-    y_data = []
-    with open(filename, 'r') as file:
-        for line in file:
-            row = line.strip().split(';')
-            row_float = []
-            for value in row:
-                try:
-                    row_float.append(float(value))
-                except ValueError:
-                    pass  # Ignorowanie pustych wartości lub niemożliwych do przekonwertowania
-            if row_float:
-                y_data.append(row_float)
-    return np.array(y_data)
+# Konwersja danych do typu float
+x_data = [float(x) for x in x_data]
 
-# Wczytaj dane
-x_filename = 'os_x_laasonen.txt'
-y_filename = 'analityczne.txt'
-y2_filename = 'laasonen_thomas.txt'
+# Wczytywanie danych z pliku do osi Y
+with open('errors_blad_jacobi.txt', 'r') as file:
+    y_data_lines = file.read().splitlines()
 
-x_data = load_x_data(x_filename)
-y_data = load_y_data(y_filename)
-y2_data = load_y_data(y2_filename)
+# Konwersja danych do listy list floatów
+y_data = []
+for line in y_data_lines:
+    y_values = line.split(',')
+    y_data.append([float(y) for y in y_values])
 
-# Sprawdzenie, czy liczba punktów w osi X zgadza się z liczbą kolumn w macierzy Y
-if x_data.shape[0] != y_data.shape[1]:
-    raise ValueError("Liczba punktów w osi X musi odpowiadać liczbie kolumn w macierzy Y.")
+# Transponowanie y_data, aby uzyskać trzy zestawy danych Y
+y_data_transposed = list(map(list, zip(*y_data)))
 
-# Obliczenie średniej dla każdej kolumny danych
-y_mean = np.mean(y_data, axis=0)
-y2_mean = np.mean(y2_data, axis=0)
+# Wybieranie pierwszego zestawu danych Y
+y = y_data_transposed[0]
 
 # Rysowanie wykresu
 plt.figure(figsize=(10, 6))
+plt.plot(x_data, y, marker='o', linestyle='None')
 
-plt.plot(x_data, y_mean, label='Wartość Dokładna')
-plt.plot(x_data, y2_mean, 'o--', label='Wartość Obliczona')
-plt.xlabel('Oś X')
-plt.ylabel('Oś Y')
-plt.title('Wykres rozwiązań numerycznych i analitycznych dla wartości czasu t = 0.5')
-plt.grid(True)
+plt.xlabel('Log10[h]')
+plt.ylabel('Log10[Błąd]')
+plt.title('Laasonen Jacobi')
 plt.legend()
+plt.grid(True)
+
+# Zapisywanie wykresu do pliku
+plt.savefig('Jacobi_Blad.png')
+
+# Wyświetlanie wykresu
 plt.show()
+
+
+# # Zadanie 2
+
+# import numpy as np
+# import matplotlib.pyplot as plt
+
+# # Funkcja do wczytania danych dla osi X
+# def load_x_data(filename):
+#     with open(filename, 'r') as file:
+#         x_data = np.loadtxt(file)
+#     return x_data
+
+# # Funkcja do wczytania danych dla osi Y
+# def load_y_data(filename):
+#     y_data = []
+#     with open(filename, 'r') as file:
+#         for line in file:
+#             row = line.strip().split(';')
+#             row_float = []
+#             for value in row:
+#                 try:
+#                     row_float.append(float(value))
+#                 except ValueError:
+#                     pass  # Ignorowanie pustych wartości lub niemożliwych do przekonwertowania
+#             if row_float:
+#                 y_data.append(row_float)
+#     return np.array(y_data)
+
+# # Wczytaj dane
+# x_filename = 'os_x_laasonen.txt'
+# y_filename = 'analityczne.txt'
+# y2_filename = 'laasonen_thomas.txt'
+
+# x_data = load_x_data(x_filename)
+# y_data = load_y_data(y_filename)
+# y2_data = load_y_data(y2_filename)
+
+# # Sprawdzenie, czy liczba punktów w osi X zgadza się z liczbą kolumn w macierzy Y
+# if x_data.shape[0] != y_data.shape[1]:
+#     raise ValueError("Liczba punktów w osi X musi odpowiadać liczbie kolumn w macierzy Y.")
+
+# # Obliczenie średniej dla każdej kolumny danych
+# y_mean = np.mean(y_data, axis=0)
+# y2_mean = np.mean(y2_data, axis=0)
+
+# # Rysowanie wykresu
+# plt.figure(figsize=(10, 6))
+
+# plt.plot(x_data, y_mean, label='Wartość Dokładna')
+# plt.plot(x_data, y2_mean, 'o--', label='Wartość Obliczona')
+# plt.xlabel('Oś X')
+# plt.ylabel('Oś Y')
+# plt.title('Wykres rozwiązań numerycznych i analitycznych dla wartości czasu t = 1.5\nLaasonen Thomas')
+# plt.grid(True)
+# plt.legend()
+# plt.show()
+
+# # Zadanie 3
 
 # import pandas as pd
 # import matplotlib.pyplot as plt

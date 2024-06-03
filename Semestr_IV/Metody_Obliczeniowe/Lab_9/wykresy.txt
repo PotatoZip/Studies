@@ -1,0 +1,62 @@
+class FuzzyClassifier:
+    def __init__(self, nclass, dim, fnums, mins, maxs):
+        self.nclass = nclass #number of classes
+        self.dim = dim #number of input features
+        self.fnums = fnums #list: number of linguistic values for each feature
+        self.mins = mins #minimum values of features
+        self.maxs = maxs #maximum values of features
+        self.funs = None #parametry funkcji przynależności (tu: trójkątnej)
+        self.rules = None #reguły
+        self.tnorm_condition = None #t-norma używana do oceny części warunkowej reguły
+        self.snorm_aggregation = None #s-norma używana do agregacji
+
+    def init_triangular_funs(self):
+        """
+        Dla każdego wymiaru generuje zadaną liczbę równomiernie rozłożonych trójkątnych funkcji przynależności
+        """
+        self.funs = []
+        for i in range(self.dim):
+            step = (self.maxs[i] - self.mins[i])/(self.fnums[i] - 1)
+            tmp = []
+            for j in range(self.fnums[i]):
+                center = self.mins[i]+j*step
+                tmp.append((center - step, center, center + step))
+            self.funs.append(tmp)
+    
+    def gen_random_rules(self, n):
+        """
+        Generuje zadaną liczbę losowych reguł
+        """
+        return [[np.random.randint(-1, num) for num in self.fnums] + [np.random.randint(0, nclass)] for i in range(n)]
+    
+    def classify(self, x):
+        """
+        Klasyfikuje pojedynczy przykład x
+        """
+        votes = [[] for i in range(self.nclass)]
+        for r in self.rules:
+            conditions = []
+            for i, findx in enumerate(r[:-1]):
+                if findx == -1:
+                    continue
+                a, b, c = self.funs[i][findx]
+                conditions.append(trfun(x[i], a, b, c))
+            condition_sat_level = self.tnorm_condition(conditions) if len(conditions) > 0 else 0
+            votes[r[-1]].append(condition_sat_level)
+        votes = [self.snorm_aggregation(v) if len(v) > 0 else 0 for v in votes]
+        return np.argmax(votes)
+    
+    def classify_all(self, X):
+        """
+        Klasyfikuje wszystkie przykłady - wiersze macierzy X
+        """
+        return np.array([self.classify(x) for x in X])
+    
+    def test(self, X, Y):
+        """
+        Klasyfikuje przykłady z X i porównuje z prawidłowymi etykietami klas z Y
+
+        Zwraca accuracy - odsetek poprawnych klasyfikacji
+        """
+        return (Y == self.classify_all(X)).sum()/X.shape[0]
+                
