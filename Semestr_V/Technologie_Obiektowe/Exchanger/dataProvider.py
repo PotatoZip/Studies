@@ -3,7 +3,7 @@ import requests
 
 class IDataProvider(ABC):
     @abstractmethod
-    def getData(self, data: str):
+    def getData(self):
         pass
     
     @abstractmethod
@@ -13,12 +13,17 @@ class IDataProvider(ABC):
 class DataProvider(IDataProvider):
     
     def __init__(self):
-        self.provider = None
         self.url = "https://api.nbp.pl/api/exchangerates/tables/a/"
 
-    def getData(self, data: str):
-        return requests.get(self.url)
+    def getData(self):
+        try:
+            response = requests.get(self.url)
+            response.raise_for_status()
+            return response.json()
+        except requests.RequestException as e:
+            print(f'Error while loading data: {e}')
+            return None
 
     @staticmethod
     def getInstance():
-        pass
+        return DataProvider()
