@@ -24,7 +24,7 @@ class UserInterface(IUserInterface):
                     secondCurrency = input("Enter Code of currency you want to receive:\n")
                     amount = input("Enter amount you want to exchange:\n")
                     exchanger = Exchanger(self.currencyCollection)
-                    input("\nAmount in new currency: " + str(round(exchanger.exchange(firstCurrency, secondCurrency, float(amount)), 2)) + "\nPress any key to continue...")
+                    input("\nAmount in new currency: " + str(round(exchanger.exchange(firstCurrency, secondCurrency, float(amount)), 2)) + "\n\nPress any key to continue...")
                     os.system('cls')
                 elif tmp == "2":
                     os.system('cls')
