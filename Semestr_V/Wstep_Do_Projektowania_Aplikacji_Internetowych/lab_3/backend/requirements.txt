@@ -1,0 +1,12 @@
+django==4.2
+djangorestframework==3.14.0
+psycopg2-binary==2.9.1
+
+
+# Useful for handling environment variables
+python-dotenv==1.0.0 
+
+# Django CORS Headers for handling cross-origin requests in development
+django-cors-headers==3.14.0
+
+

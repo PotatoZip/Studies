@@ -1,0 +1,92 @@
+# version: '3'
+# services:
+#   nginx:
+#     build: ./nginx
+#     ports:
+#       - "8080:80"
+#     depends_on:
+#       - python_server
+#     networks:
+#       - webnet
+
+#   python_server:
+#     build: ./python_server
+#     ports:
+#       - "8000:8000"
+#     networks:
+#       - webnet
+  
+#   postgres:
+#     image: postgres:13
+#     restart: always
+#     environment:
+#       - POSTGRES_USER=myuser
+#       - POSTGRES_PASSWORD=mypassword
+#       - POSTGRES_DB=mydatabase
+#     volumes:
+#       - ./postgres_data:/var/lib/postgresql/data
+#       - ./postgres_init:/docker-entrypoint-initdb.d/
+#     networks:
+#       - webnet
+    
+#   pgadmin:
+#     image: dpage/pgadmin4:latest
+#     environment:
+#       - PGADMIN_DEFAULT_EMAIL=wiktor.zmiendak@gmail.com
+#       - PGADMIN_DEFAULT_PASSWORD=admin
+#     ports:
+#       - "5050:80"
+#     depends_on:
+#       - postgres
+#     networks:
+#       - webnet
+
+# networks:
+#   webnet:
+
+version: '3'
+
+services:
+  backend:
+    build: ./backend
+    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+
+  ui-app:
+    build: ./ui-app
+    ports:
+      - "8080:80"  # Map Nginx port 80 in the container to port 8080 on the host
+    depends_on:
+      - backend
+
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: wiktor.zmiendak@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
+volumes:
+  postgres_data:
+  pgadmin_data:
