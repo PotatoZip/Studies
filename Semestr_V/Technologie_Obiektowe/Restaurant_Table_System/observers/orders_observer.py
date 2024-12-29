@@ -1,0 +1,3 @@
+
+class OrdersObservers:
+    pass

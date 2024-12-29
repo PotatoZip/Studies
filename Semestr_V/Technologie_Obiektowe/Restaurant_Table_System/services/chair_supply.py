@@ -4,7 +4,7 @@ class ChairSupply:
 
     def take_chairs(self, amount):
         if amount > self.stock:
-            raise ValueError("Brak wystarczającej liczby krzesełek w magazynie!")
+            raise ValueError("Chair storage is empty!")
         self.stock -= amount
         return amount
 

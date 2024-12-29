@@ -8,7 +8,7 @@ TABLE_CONFIGURATION = {
     7: 2,
     8: 2,
     9: 10,
-    10: 10
+    10: 10,
 }
 
-INITIAL_CHAIR_STOCK = 20
+INITIAL_CHAIR_STOCK = 30

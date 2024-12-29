@@ -2,7 +2,6 @@ import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
-from configuration import TABLE_CONFIGURATION, INITIAL_CHAIR_STOCK
 from services.chair_supply import ChairSupply
 from models.table import Table
 

@@ -4,8 +4,6 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 from interfaces.i_state import IState
 from states.available_state import AvailableState
-from states.dirty_state import DirtyState
-from states.occupied_state import OccupiedState
 
 class Table:
     def __init__(self, table_id, seats, chair_supply):
@@ -14,6 +12,7 @@ class Table:
         self.chair_supply = chair_supply
         self.extra_chairs = 0
         self.state:IState = AvailableState()
+        self.note = ""
 
     def add_chairs(self, amount):
         self.extra_chairs += self.chair_supply.take_chairs(amount)
@@ -27,3 +26,6 @@ class Table:
     
     def set_state(self, state):
         self.state = state
+
+    def set_note(self, note):
+        self.note = note
