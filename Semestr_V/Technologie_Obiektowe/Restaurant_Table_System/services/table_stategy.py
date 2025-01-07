@@ -11,6 +11,7 @@ class TableStrategy:
         self.tables = [
             Table(table_id, seats, self.chair_stock) for table_id, seats in table_config.items()
         ]
+        self.reservations = []
 
     def get_table(self, table_id):
         return next((table for table in self.tables if table.id == table_id), None)
