@@ -32,7 +32,7 @@ class TablesView:
             
             for reservation in self.manager.reservations:
                 if reservation.table_id == table.id:
-                    res_time = datetime.datetime.strptime(f"{reservation.date} {reservation.time}", "%Y-%m-%d %H:%M")
+                    res_time = datetime.datetime.strptime(f"{reservation.date} {reservation.start_time}", "%Y-%m-%d %H:%M")
                     time_diff = (res_time - current_time).total_seconds()
 
                     if 0 < time_diff <= 3600:
