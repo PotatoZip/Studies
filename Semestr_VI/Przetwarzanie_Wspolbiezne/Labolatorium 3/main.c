@@ -40,7 +40,7 @@ int main() {
     pthread_join(watek_1, NULL);
     pthread_join(watek_2, NULL);
 
-    printf("Wartość po iteracjach: %d\n", licznik.wartosc);
+    printf("Wartosc po iteracjach: %d\n", licznik.wartosc);
 
     pthread_mutex_destroy(&licznik.mutex);
 
