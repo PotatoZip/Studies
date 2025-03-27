@@ -193,19 +193,46 @@ int main(int argc, char** argv) {
     fprintf(stdout, "Sending UDP...\n");
 
     /* Wysylanie datagramow co 1 sekunde: */
-    for (;;) {
+    // for (;;) {
 
-        /*
-         * Prosze zauwazyc, ze pseudo-naglowek nie jest wysylany
-         * (ale jest umieszczony w buforze za naglowkiem UDP dla wygodnego
-         * obliczania sumy kontrolnej):
-         */
+    //     /*
+    //      * Prosze zauwazyc, ze pseudo-naglowek nie jest wysylany
+    //      * (ale jest umieszczony w buforze za naglowkiem UDP dla wygodnego
+    //      * obliczania sumy kontrolnej):
+    //      */
+    //     retval = sendto(
+    //                  sockfd,
+    //                  datagram, ip_header->ip_len,
+    //                  0,
+    //                  rp->ai_addr, rp->ai_addrlen
+    //              );
+
+    //     if (retval == -1) {
+    //         perror("sendto()");
+    //     }
+
+    //     sleep(1);
+    // }
+    for (;;) {
+        fprintf(stdout, "rp = %p, ip_header->ip_len = %d\n", rp, ip_header->ip_len); // Dodane
+        fprintf(stdout, "Wysyłane bajty (hex):\n");
+        for (unsigned int i = 0; i < ip_header->ip_len; ++i) {
+            fprintf(stdout, "%02x ", datagram[i]);
+            if ((i + 1) % 16 == 0) {
+                fprintf(stdout, "\n");
+            }
+        }
+        fprintf(stdout, "\n");
+
+        fprintf(stdout, "sendto parameters: sockfd=%d, len=%d, addr=%p, addrlen=%d\n",
+                sockfd, ip_header->ip_len, rp->ai_addr, rp->ai_addrlen); // Dodane
+
         retval = sendto(
-                     sockfd,
-                     datagram, ip_header->ip_len,
-                     0,
-                     rp->ai_addr, rp->ai_addrlen
-                 );
+                    sockfd,
+                    datagram, ip_header->ip_len,
+                    0,
+                    rp->ai_addr, rp->ai_addrlen
+                );
 
         if (retval == -1) {
             perror("sendto()");
