@@ -1,0 +1,13 @@
+[Unit]
+Description=Demoniczny PUS
+After=network.target pus_sock.socket
+Requires=pus_sock.socket
+
+[Service]
+User=wiktor
+WorkingDirectory=/tmp/pus/
+ExecStart=/tmp/pus/tcp_server_sock socket-activation 3301
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

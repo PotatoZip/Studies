@@ -1,0 +1,14 @@
+[Unit]
+Description=Demoniczny PUS
+
+[Service]
+User=wiktor
+WorkingDirectory=/tmp/pus/
+ExecStart=/tmp/pus/tcp_server 3300
+Restart=always
+SyslogIdentifier=pus
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
