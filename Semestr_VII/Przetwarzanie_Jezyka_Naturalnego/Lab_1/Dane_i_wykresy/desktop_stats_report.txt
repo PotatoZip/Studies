@@ -1,0 +1,53 @@
+DESCRIPTIVE STATISTICS SUMMARY
+================================================================================
+
+Statistic            Price (PLN)     RAM (GB)        Storage (GB)    Cores           
+--------------------------------------------------------------------------------
+Count                240             240             240             206             
+Mean                 5366.67         24.72           873.30          8.81            
+Median               4596.00         32.00           1024.00         8.00            
+Mode                 8995            32              1024            6               
+Min                  844.40          0               0.00            4.00            
+Max                  19199.00        96              2048.00         28.00           
+Std Dev              3091.36         12.69           473.35          4.76            
+Q1 (25%)             3136.50         16.00           512.00          6.00            
+Q3 (75%)             6749.00         32.00           1024.00         10.00           
+IQR                  3612.50         16.00           512.00          4.00            
+Range                18354.60        96              2048.00         24.00           
+CV (%)               57.6            51.4            54.2            54.0            
+Skewness             1.398           1.207           0.749           1.843           
+Kurtosis             2.721           4.769           0.847           3.756           
+Outliers             8               8               21              12              
+Outlier %            3.3             3.3             8.8             5.8             
+
+
+Detailed Analysis:
+==================================================
+
+PRICE:
+  Sample size: 240
+  Central tendency: Mean=5366.67, Median=4596.00
+  Spread: Std=3091.36, Range=18354.60
+  Shape: Skewness=1.398, Kurtosis=2.721
+  Outliers: 8 (3.3%)
+
+RAM_GB:
+  Sample size: 240
+  Central tendency: Mean=24.72, Median=32.00
+  Spread: Std=12.69, Range=96.00
+  Shape: Skewness=1.207, Kurtosis=4.769
+  Outliers: 8 (3.3%)
+
+STORAGE_GB:
+  Sample size: 240
+  Central tendency: Mean=873.30, Median=1024.00
+  Spread: Std=473.35, Range=2048.00
+  Shape: Skewness=0.749, Kurtosis=0.847
+  Outliers: 21 (8.8%)
+
+CORES:
+  Sample size: 206
+  Central tendency: Mean=8.81, Median=8.00
+  Spread: Std=4.76, Range=24.00
+  Shape: Skewness=1.843, Kurtosis=3.756
+  Outliers: 12 (5.8%)

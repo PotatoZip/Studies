@@ -1,0 +1,189 @@
+Analiza języka polskiego – „Lalka” (B. Prus)
+Data analizy: 2025-10-22 18:00:45
+================================================================================
+
+Źródło tekstu: https://wolnelektury.pl/media/book/txt/lalka-tom-pierwszy.txt
+
+================================================================================
+WYBRANE 5 ZDAŃ Z „LALKI”
+================================================================================
+
+1. Zwyczajnie — stosunki z Akademią Medyczną, ze Szkołą Sztuk Pięknych… Wtedy wszystkim paliło się we łbach, a on nie chciał być gorszym od innych.
+
+2. W dzień służył gościom przy bufecie i prowadził rachunki, a w nocy uczył się… — Licha musiała to być usługa.
+
+3. — Taka jak innych — odparł radca, niechętnie machając ręką.
+
+4. Raz tak zwymyślał gościa, że mało obaj nie porwali się za czuby.
+
+5. Bo kiedy po Warszawie rozeszła się wieść, że subiekt Hopfera chce wstąpić do Szkoły Przygotowawczej, tłumy zaczęły tam przychodzić na śniadanie.
+
+================================================================================
+PORÓWNANIE STEMMERÓW I LEMATYZACJI
+================================================================================
+
+================================================================================
+ZDANIE 1
+================================================================================
+Oryginał: Zwyczajnie — stosunki z Akademią Medyczną, ze Szkołą Sztuk Pięknych… Wtedy wszystkim paliło się we łbach, a on nie chciał być gorszym od innych.
+
+Token                Stem_A           Stem_B           Lemma (Morfeusz2)         A==B?
+-----------------------------------------------------------------------------------------------
+Zwyczajnie           zwyczajn         zwyczajn         zwyczajnie                +
+stosunki             stosunk          stosunk          stosunki                  +
+z                    z                z                z:p                       +
+Akademią             akademi          akadem           akademia                  - RÓŻNICA
+Medyczną             medyczn          medyczn          medyczny                  +
+ze                   ze               ze               z:p                       +
+Szkołą               szkoł            szkoł            szkoła                    +
+Sztuk                sztuk            sztuk            sztuk                     +
+Wtedy                wted             wted             wtedy                     +
+wszystkim            wszystkim        wszystkim        wszystko:s                +
+paliło               palił            palił            palić                     +
+się                  się              się              się                       +
+we                   we               we               w                         +
+łbach                łbach            łbach            łeb:sm2                   +
+a                    a                a                a:c                       +
+on                   on               on               on:a                      +
+nie                  nie              nie              nie:c                     +
+chciał               chciał           chcia            chcieć                    - RÓŻNICA
+być                  być              być              bycie                     +
+gorszym              gorszym          gorszym          zły:a                     +
+od                   od               od               od                        +
+innych               innych           innych           inny:a                    +
+
+Różnice między stemmerami: 2
+
+
+================================================================================
+ZDANIE 2
+================================================================================
+Oryginał: W dzień służył gościom przy bufecie i prowadził rachunki, a w nocy uczył się… — Licha musiała to być usługa.
+
+Token                Stem_A           Stem_B           Lemma (Morfeusz2)         A==B?
+-----------------------------------------------------------------------------------------------
+W                    w                w                w                         +
+dzień                dzień            dzień            dzienić                   +
+służył               służył           służy            służyć                    - RÓŻNICA
+gościom              gości            gośc             gościa                    - RÓŻNICA
+przy                 prz              prz              przy                      +
+bufecie              bufec            bufec            bufet                     +
+i                    i                i                i:i                       +
+prowadził            prowadził        prowadz          prowadzić                 - RÓŻNICA
+rachunki             rachunk          rachunk          rachunki                  +
+a                    a                a                a:c                       +
+w                    w                w                w                         +
+nocy                 noc              noc              noc                       +
+uczył                uczył            uczy             uczyć                     - RÓŻNICA
+Licha                lich             lich             licha                     +
+musiała              musiał           musia            musieć                    - RÓŻNICA
+to                   to               to               to:c                      +
+być                  być              być              bycie                     +
+usługa               usług            usług            usługa                    +
+
+Różnice między stemmerami: 5
+
+
+================================================================================
+ZDANIE 3
+================================================================================
+Oryginał: — Taka jak innych — odparł radca, niechętnie machając ręką.
+
+Token                Stem_A           Stem_B           Lemma (Morfeusz2)         A==B?
+-----------------------------------------------------------------------------------------------
+Taka                 tak              tak              taki:a                    +
+jak                  jak              jak              jak:d                     +
+innych               innych           innych           inny:a                    +
+odparł               odparł           odpar            odeprzeć                  - RÓŻNICA
+radca                radc             radc             radca                     +
+niechętnie           niechętn         niechętn         niechętnie                +
+machając             machając         mach             machać                    - RÓŻNICA
+ręką                 ręk              ręk              ręka                      +
+
+Różnice między stemmerami: 2
+
+
+================================================================================
+ZDANIE 4
+================================================================================
+Oryginał: Raz tak zwymyślał gościa, że mało obaj nie porwali się za czuby.
+
+Token                Stem_A           Stem_B           Lemma (Morfeusz2)         A==B?
+-----------------------------------------------------------------------------------------------
+Raz                  raz              raz              raz:sm3~a~u               +
+tak                  tak              tak              tak:i                     +
+zwymyślał            zwymyślał        zwymyśla         zwymyślać                 - RÓŻNICA
+gościa               gości            gośc             gościa                    - RÓŻNICA
+że                   że               że               że:m                      +
+mało                 mał              mał              mało:d                    +
+obaj                 obaj             obaj             oba                       +
+nie                  nie              nie              nie:c                     +
+porwali              porwal           porwa            porwać                    - RÓŻNICA
+się                  się              się              się                       +
+za                   za               za               za:p                      +
+czuby                czub             czub             czub:sm1                  +
+
+Różnice między stemmerami: 3
+
+
+================================================================================
+ZDANIE 5
+================================================================================
+Oryginał: Bo kiedy po Warszawie rozeszła się wieść, że subiekt Hopfera chce wstąpić do Szkoły Przygotowawczej, tłumy zaczęły tam przychodzić na śniadanie.
+
+Token                Stem_A           Stem_B           Lemma (Morfeusz2)         A==B?
+-----------------------------------------------------------------------------------------------
+Bo                   bo               bo               bo:t                      +
+kiedy                kied             kied             kiedy:d                   +
+po                   po               po               po                        +
+Warszawie            warszaw          warszaw          warszawa                  +
+rozeszła             rozeszł          rozesz           rozejść                   - RÓŻNICA
+się                  się              się              się                       +
+wieść                wieść            wieść            wieść:v                   +
+że                   że               że               że:m                      +
+subiekt              subiekt          subiekt          subiekt:sm1               +
+Hopfera              hopfer           hopfer           hopfera                   +
+chce                 chc              chc              chcieć                    +
+wstąpić              wstąpić          wstąpić          wstąpić                   +
+do                   do               do               do:p                      +
+Szkoły               szkoł            szko             szkoła:sm1                - RÓŻNICA
+Przygotowawczej      przygotowawczej  przygotowawczej  przygotowawczy            +
+tłumy                tłum             tłum             tłum                      +
+zaczęły              zaczęł           zaczę            zacząć                    - RÓŻNICA
+tam                  tam              tam              tam:t                     +
+przychodzić          przychodzić      przychodzić      przychodzić               +
+na                   na               na               na:p                      +
+śniadanie            śniadan          śniadan          śniadanie                 +
+
+Różnice między stemmerami: 3
+
+
+================================================================================
+STATYSTYKI – PORÓWNANIE STEMMERÓW
+================================================================================
+
+Łącznie słów: 81
+Stemmer_A i Stemmer_B zgodne: 66 (81.5%)
+Różne wyniki: 15 (18.5%)
+
+================================================================================
+REDUKCJA SŁOWNICTWA
+================================================================================
+Unikalne słowa oryginalnie: 73
+Po Stem_A: 70 (redukcja: 4.1%)
+Po Stem_B: 71 (redukcja: 2.7%)
+Po Lematyzacji: 69 (redukcja: 5.5%)
+
+================================================================================
+WNIOSKI
+================================================================================
+
+• W języku polskim stemming (obcinanie końcówek) daje niestabilne i często błędne formy.
+• Dwa zastosowane stemmery pokazują różnice w agresywności – drugi usuwa więcej sufiksów.
+• Lematyzacja z Morfeuszem2 daje poprawne formy słownikowe („kobietom” → „kobieta”, „poszedłem” → „pójść”).
+• Dlatego w analizie języka polskiego lematyzacja jest znacznie dokładniejsza niż stemming.
+
+
+================================================================================
+ANALIZA ZAKOŃCZONA
+================================================================================

@@ -1,0 +1,425 @@
+NLP Analysis Report - Generated on 2025-10-22 17:59:40
+================================================================================
+
+
+================================================================================
+SELECTED 5 SENTENCES FROM HAMLET
+================================================================================
+
+1. Horatio says ’tis but our fantasy, And will not let belief take hold of him Touching this dreaded sight, twice seen of us.
+
+2. Therefore I have entreated him along With us to watch the minutes of this night, That if again this apparition come He may approve our eyes and speak to it.
+
+3. Sit down awhile, And let us once again assail your ears, That are so fortified against our story, What we two nights have seen.
+
+4. Well, sit we down, And let us hear Barnardo speak of this.
+
+5. Last night of all, When yond same star that’s westward from the pole, Had made his course t’illume that part of heaven Where now it burns, Marcellus and myself, The bell then beating one— MARCELLUS.
+
+
+================================================================================
+DETAILED COMPARISON: PORTER vs SNOWBALL STEMMER
+================================================================================
+
+================================================================================
+SENTENCE 1
+================================================================================
+Original: Horatio says ’tis but our fantasy, And will not let belief take hold of him Touching this dreaded sight, twice seen of us.
+
+Tokens (27): ['Horatio', 'says', '’', 'tis', 'but', 'our', 'fantasy', ',', 'And', 'will', 'not', 'let', 'belief', 'take', 'hold', 'of', 'him', 'Touching', 'this', 'dreaded', 'sight', ',', 'twice', 'seen', 'of', 'us', '.']
+
+Token                Porter Stem          Snowball Stem        Match?
+--------------------------------------------------------------------------------
+Horatio              horatio              horatio              +
+says                 say                  say                  +
+’                    ’                    ’                    +
+tis                  ti                   tis                  - DIFFERENT
+but                  but                  but                  +
+our                  our                  our                  +
+fantasy              fantasi              fantasi              +
+,                    ,                    ,                    +
+And                  and                  and                  +
+will                 will                 will                 +
+not                  not                  not                  +
+let                  let                  let                  +
+belief               belief               belief               +
+take                 take                 take                 +
+hold                 hold                 hold                 +
+of                   of                   of                   +
+him                  him                  him                  +
+Touching             touch                touch                +
+this                 thi                  this                 - DIFFERENT
+dreaded              dread                dread                +
+sight                sight                sight                +
+,                    ,                    ,                    +
+twice                twice                twice                +
+seen                 seen                 seen                 +
+of                   of                   of                   +
+us                   us                   us                   +
+.                    .                    .                    +
+
+Found 2 difference(s) between stemmers in this sentence
+
+================================================================================
+SENTENCE 2
+================================================================================
+Original: Therefore I have entreated him along With us to watch the minutes of this night, That if again this apparition come He may approve our eyes and speak to it.
+
+Tokens (32): ['Therefore', 'I', 'have', 'entreated', 'him', 'along', 'With', 'us', 'to', 'watch', 'the', 'minutes', 'of', 'this', 'night', ',', 'That', 'if', 'again', 'this', 'apparition', 'come', 'He', 'may', 'approve', 'our', 'eyes', 'and', 'speak', 'to', 'it', '.']
+
+Token                Porter Stem          Snowball Stem        Match?
+--------------------------------------------------------------------------------
+Therefore            therefor             therefor             +
+I                    i                    i                    +
+have                 have                 have                 +
+entreated            entreat              entreat              +
+him                  him                  him                  +
+along                along                along                +
+With                 with                 with                 +
+us                   us                   us                   +
+to                   to                   to                   +
+watch                watch                watch                +
+the                  the                  the                  +
+minutes              minut                minut                +
+of                   of                   of                   +
+this                 thi                  this                 - DIFFERENT
+night                night                night                +
+,                    ,                    ,                    +
+That                 that                 that                 +
+if                   if                   if                   +
+again                again                again                +
+this                 thi                  this                 - DIFFERENT
+apparition           apparit              apparit              +
+come                 come                 come                 +
+He                   he                   he                   +
+may                  may                  may                  +
+approve              approv               approv               +
+our                  our                  our                  +
+eyes                 eye                  eye                  +
+and                  and                  and                  +
+speak                speak                speak                +
+to                   to                   to                   +
+it                   it                   it                   +
+.                    .                    .                    +
+
+Found 2 difference(s) between stemmers in this sentence
+
+================================================================================
+SENTENCE 3
+================================================================================
+Original: Sit down awhile, And let us once again assail your ears, That are so fortified against our story, What we two nights have seen.
+
+Tokens (28): ['Sit', 'down', 'awhile', ',', 'And', 'let', 'us', 'once', 'again', 'assail', 'your', 'ears', ',', 'That', 'are', 'so', 'fortified', 'against', 'our', 'story', ',', 'What', 'we', 'two', 'nights', 'have', 'seen', '.']
+
+Token                Porter Stem          Snowball Stem        Match?
+--------------------------------------------------------------------------------
+Sit                  sit                  sit                  +
+down                 down                 down                 +
+awhile               awhil                awhil                +
+,                    ,                    ,                    +
+And                  and                  and                  +
+let                  let                  let                  +
+us                   us                   us                   +
+once                 onc                  onc                  +
+again                again                again                +
+assail               assail               assail               +
+your                 your                 your                 +
+ears                 ear                  ear                  +
+,                    ,                    ,                    +
+That                 that                 that                 +
+are                  are                  are                  +
+so                   so                   so                   +
+fortified            fortifi              fortifi              +
+against              against              against              +
+our                  our                  our                  +
+story                stori                stori                +
+,                    ,                    ,                    +
+What                 what                 what                 +
+we                   we                   we                   +
+two                  two                  two                  +
+nights               night                night                +
+have                 have                 have                 +
+seen                 seen                 seen                 +
+.                    .                    .                    +
+
+Both stemmers produced identical results for this sentence
+
+================================================================================
+SENTENCE 4
+================================================================================
+Original: Well, sit we down, And let us hear Barnardo speak of this.
+
+Tokens (15): ['Well', ',', 'sit', 'we', 'down', ',', 'And', 'let', 'us', 'hear', 'Barnardo', 'speak', 'of', 'this', '.']
+
+Token                Porter Stem          Snowball Stem        Match?
+--------------------------------------------------------------------------------
+Well                 well                 well                 +
+,                    ,                    ,                    +
+sit                  sit                  sit                  +
+we                   we                   we                   +
+down                 down                 down                 +
+,                    ,                    ,                    +
+And                  and                  and                  +
+let                  let                  let                  +
+us                   us                   us                   +
+hear                 hear                 hear                 +
+Barnardo             barnardo             barnardo             +
+speak                speak                speak                +
+of                   of                   of                   +
+this                 thi                  this                 - DIFFERENT
+.                    .                    .                    +
+
+Found 1 difference(s) between stemmers in this sentence
+
+================================================================================
+SENTENCE 5
+================================================================================
+Original: Last night of all, When yond same star that’s westward from the pole, Had made his course t’illume that part of heaven Where now it burns, Marcellus and myself, The bell then beating one— MARCELLUS.
+
+Tokens (44): ['Last', 'night', 'of', 'all', ',', 'When', 'yond', 'same', 'star', 'that', '’', 's', 'westward', 'from', 'the', 'pole', ',', 'Had', 'made', 'his', 'course', 't', '’', 'illume', 'that', 'part', 'of', 'heaven', 'Where', 'now', 'it', 'burns', ',', 'Marcellus', 'and', 'myself', ',', 'The', 'bell', 'then', 'beating', 'one—', 'MARCELLUS', '.']
+
+Token                Porter Stem          Snowball Stem        Match?
+--------------------------------------------------------------------------------
+Last                 last                 last                 +
+night                night                night                +
+of                   of                   of                   +
+all                  all                  all                  +
+,                    ,                    ,                    +
+When                 when                 when                 +
+yond                 yond                 yond                 +
+same                 same                 same                 +
+star                 star                 star                 +
+that                 that                 that                 +
+’                    ’                    ’                    +
+s                    s                    s                    +
+westward             westward             westward             +
+from                 from                 from                 +
+the                  the                  the                  +
+pole                 pole                 pole                 +
+,                    ,                    ,                    +
+Had                  had                  had                  +
+made                 made                 made                 +
+his                  hi                   his                  - DIFFERENT
+course               cours                cours                +
+t                    t                    t                    +
+’                    ’                    ’                    +
+illume               illum                illum                +
+that                 that                 that                 +
+part                 part                 part                 +
+of                   of                   of                   +
+heaven               heaven               heaven               +
+Where                where                where                +
+now                  now                  now                  +
+it                   it                   it                   +
+burns                burn                 burn                 +
+,                    ,                    ,                    +
+Marcellus            marcellu             marcellus            - DIFFERENT
+and                  and                  and                  +
+myself               myself               myself               +
+,                    ,                    ,                    +
+The                  the                  the                  +
+bell                 bell                 bell                 +
+then                 then                 then                 +
+beating              beat                 beat                 +
+one—                 one—                 one—                 +
+MARCELLUS            marcellu             marcellus            - DIFFERENT
+.                    .                    .                    +
+
+Found 3 difference(s) between stemmers in this sentence
+
+
+================================================================================
+STATISTICAL ANALYSIS: STEMMER COMPARISON
+================================================================================
+
+Total words analyzed: 125
+Porter & Snowball agree: 117 (93.6%)
+Porter & Snowball differ: 8 (6.4%)
+
+Examples where stemmers differ:
+  tis             → Porter: ti           | Snowball: tis         
+  this            → Porter: thi          | Snowball: this        
+  this            → Porter: thi          | Snowball: this        
+  this            → Porter: thi          | Snowball: this        
+  this            → Porter: thi          | Snowball: this        
+  his             → Porter: hi           | Snowball: his         
+  Marcellus       → Porter: marcellu     | Snowball: marcellus   
+  MARCELLUS       → Porter: marcellu     | Snowball: marcellus   
+
+
+================================================================================
+COMPREHENSIVE COMPARISON: TOKENIZATION vs STEMMING vs LEMMATIZATION
+================================================================================
+
+Sample Sentence: Horatio says ’tis but our fantasy, And will not let belief take hold of him Touching this dreaded sight, twice seen of us.
+
+Original Token       Porter Stem     Snowball Stem   Lemma          
+================================================================================
+Horatio              horatio         horatio         horatio        
+says                 say             say             say            
+’                    ’               ’               ’              
+tis                  ti              tis             ti             
+but                  but             but             but            
+our                  our             our             our            
+fantasy              fantasi         fantasi         fantasy        
+,                    ,               ,               ,              
+And                  and             and             and            
+will                 will            will            will           
+not                  not             not             not            
+let                  let             let             let            
+belief               belief          belief          belief         
+take                 take            take            take           
+hold                 hold            hold            hold           
+of                   of              of              of             
+him                  him             him             him            
+Touching             touch           touch           touching       
+this                 thi             this            this           
+dreaded              dread           dread           dreaded        
+sight                sight           sight           sight          
+,                    ,               ,               ,              
+twice                twice           twice           twice          
+seen                 seen            seen            seen           
+of                   of              of              of             
+us                   us              us              u              
+.                    .               .               .              
+
+
+================================================================================
+VOCABULARY REDUCTION ANALYSIS
+================================================================================
+
+Original unique words: 89
+After Porter stemming: 88 (reduction: 1.1%)
+After Snowball stemming: 88 (reduction: 1.1%)
+After lemmatization: 88 (reduction: 1.1%)
+
+
+================================================================================
+ANALYTICAL SUMMARY OF TECHNIQUES
+================================================================================
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                          1. TOKENIZATION                                   ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+Purpose: Splits text into individual units (tokens) - words, punctuation, etc.
+
+Algorithm: NLTK's Punkt Tokenizer
+- Uses unsupervised machine learning approach
+- Identifies sentence boundaries and word boundaries
+- Handles abbreviations, contractions, and special cases
+
+Characteristics:
+- Preserves original word forms
+- Includes punctuation as separate tokens
+- Foundation for all other NLP tasks
+- Language-specific rules
+
+Example: "Don't go!" → ["Do", "n't", "go", "!"]
+
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                     2. STEMMING - PORTER STEMMER                           ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+Purpose: Reduces words to root form by removing suffixes
+
+Algorithm: Porter Stemmer (1980, Martin Porter)
+- Rule-based approach with 5 steps
+- Applies suffix stripping rules sequentially
+- Fast and lightweight
+- Language: Originally English
+
+Characteristics:
+- Very fast performance
+- May produce non-words (e.g., "organization" → "organ")
+- Aggressive stemming
+- Cannot handle irregular words well
+- Good for information retrieval
+
+Examples:
+- "running", "runs", "ran" → "run" (stem may not be accurate)
+- "fishing", "fished", "fisher" → "fish"
+
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                    3. STEMMING - SNOWBALL STEMMER                          ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+Purpose: Improved stemming algorithm (Porter2)
+
+Algorithm: Snowball Stemmer (2001, Martin Porter)
+- Evolution of Porter Stemmer
+- More aggressive and accurate
+- Better handling of English irregularities
+- Supports multiple languages
+
+Characteristics:
+- More accurate than Porter
+- Better handles exceptions
+- Still very fast
+- Slightly more aggressive stemming
+- Multilingual support
+
+Differences from Porter:
+- Better handling of -tion, -sion endings
+- Improved treatment of -ly adverbs
+- More consistent results
+
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                        4. LEMMATIZATION                                    ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+Purpose: Reduces words to dictionary base form (lemma)
+
+Algorithm: WordNet Lemmatizer
+- Uses morphological analysis
+- Dictionary lookup in WordNet database
+- Context-aware (with POS tagging)
+- Returns valid words only
+
+Characteristics:
+- Always produces valid words
+- More accurate than stemming
+- Handles irregular forms (e.g., "better" → "good")
+- Slower than stemming
+- Requires lexical database
+- Best for NLU tasks
+
+Examples:
+- "running", "runs", "ran" → "run" (needs POS tag for accuracy)
+- "better" → "good" (with proper POS tag)
+- "feet" → "foot"
+
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                         KEY COMPARISONS                                    ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+SPEED:
+  Tokenization > Porter Stemmer > Snowball Stemmer > Lemmatization
+
+ACCURACY:
+  Lemmatization > Snowball Stemmer > Porter Stemmer > Tokenization
+
+VOCABULARY REDUCTION:
+  Porter Stemmer ≈ Snowball Stemmer > Lemmatization > Tokenization
+
+USE CASES:
+  * Tokenization: Required first step for all NLP
+  * Porter Stemmer: Fast IR systems, search engines (legacy)
+  * Snowball Stemmer: Modern search, text mining
+  * Lemmatization: Text analysis, NLU, semantic applications
+
+WHEN TO USE WHAT:
+  -> Search engines: Snowball Stemmer (speed + accuracy balance)
+  -> Text classification: Either stemmer (vocabulary reduction)
+  -> Sentiment analysis: Lemmatization (preserves meaning)
+  -> Information extraction: Lemmatization (accurate word forms)
+  -> Real-time systems: Stemming (faster processing)
+
+
+================================================================================
+ANALYSIS COMPLETE
+================================================================================

@@ -1,0 +1,76 @@
+Comparing sentences:
+Sentence 1: 'Ala ma kota'
+Sentence 2: 'Ala posiada kota'
+============================================================
+
+1. LEVENSHTEIN DISTANCE
+   How it works: Minimum number of single-character edits (insertions, deletions, substitutions)
+   to transform one string into another.
+   Distance: 6
+   Normalized similarity: 0.625
+
+2. HAMMING DISTANCE
+   How it works: Number of positions where characters differ (strings must be same length)
+   Distance: 11
+   Normalized similarity: 0.312
+   Explanation: Compares character by character, counts mismatches
+
+3. JARO-WINKLER SIMILARITY
+   How it works: Based on matching characters and transpositions, with bonus for common prefixes
+   Similarity: 0.847
+   Explanation: High similarity due to common prefix 'Ala' and suffix 'kota'
+
+4. JACCARD SIMILARITY (character-based)
+   How it works: Size of intersection divided by size of union of character sets
+   Similarity: 0.588
+   Explanation: Based on unique characters shared between strings
+
+5. COSINE SIMILARITY
+   How it works: Cosine of angle between character frequency vectors
+   Similarity: 0.754
+   Explanation: Measures similarity based on character frequency distributions
+
+6. SORENSEN-DICE SIMILARITY
+   How it works: 2 * |intersection| / (|set1| + |set2|)
+   Similarity: 0.741
+   Explanation: Emphasizes common elements more than Jaccard
+
+============================================================
+COMPARISON SUMMARY:
+Levenshtein distance: 6 (lower = more similar)
+Levenshtein similarity: 0.625 (higher = more similar)
+Hamming similarity: 0.312
+Jaro-Winkler similarity: 0.847
+Jaccard similarity: 0.588
+Cosine similarity: 0.754
+Sorensen-Dice similarity: 0.741
+
+ANALYSIS:
+- Levenshtein shows exact edit operations needed
+- Jaro-Winkler gives highest similarity due to common prefix/suffix
+- Character-based measures (Jaccard, Cosine, Sorensen) focus on character overlap
+- Hamming works but is less suitable for strings of different lengths
+
+============================================================
+WORD-LEVEL ANALYSIS:
+Words in sentence 1: ['Ala', 'ma', 'kota']
+Words in sentence 2: ['Ala', 'posiada', 'kota']
+
+Word-level Levenshtein distance: 1
+Word-level Levenshtein similarity: 0.667
+Word-level Jaccard similarity: 0.500
+Word-level Jaro-Winkler similarity: 0.800
+
+WORD-LEVEL EXPLANATION:
+- Need to substitute 'ma' with 'posiada' (1 word operation)
+- Word-level analysis shows structural similarity better
+- 2 out of 3 words are identical ('Ala', 'kota')
+
+============================================================
+DETAILED LEVENSHTEIN ANALYSIS:
+Character-by-character transformation:
+'Ala ma kota' -> 'Ala posiada kota'
+1. Keep 'Ala '
+2. Replace 'ma' with 'posiada' (substitute 'm' with 'p', substitute 'a' with 'o', insert 's', insert 'i', insert 'a', insert 'd', insert 'a')
+3. Keep ' kota'
+Total: 6 operations (2 substitutions + 4 insertions)

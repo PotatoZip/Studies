@@ -1,0 +1,40 @@
+Sentiment Analysis Results
+========================
+
+Sentiment Distribution:
+sentiment
+neutral     11118
+positive     8582
+negative     7781
+Name: count, dtype: int64
+
+Percentages:
+sentiment
+neutral     40.457043
+positive    31.228849
+negative    28.314108
+Name: count, dtype: float64
+
+Average Text Length by Sentiment:
+sentiment
+negative    70.509318
+neutral     65.239453
+positive    70.437427
+Name: text_length, dtype: float64
+
+Sentiment Distribution by Time of Day:
+sentiment      negative  neutral  positive
+Time of Tweet                             
+morning            2561     3763      2837
+night              2618     3680      2862
+noon               2602     3675      2883
+
+Sentiment Distribution by Age Group:
+sentiment    negative  neutral  positive
+Age of User                             
+0-20             1290     1898      1393
+21-30            1336     1830      1414
+31-45            1315     1814      1451
+46-60            1271     1865      1444
+60-70            1266     1845      1469
+70-100           1303     1866      1411

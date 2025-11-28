@@ -1,0 +1,18 @@
+WIERSZ #2
+============================================================
+
+ileż dałbym żeby dzień był jedynie długim wierszem
+i żeby noc ciemną jego stroną
+wszystko jest poezją a najmniej poezją
+jest napisany wiersz
+
+i zapomnieć wszystko jaka epoka jaki wiek
+ja cóż włóczęga niespokojny duch
+który szuka miejsca na tej ziemi
+w krzywe sosny na pagórkach bije wiatr
+smutno krzywym sosnom taki wieczór
+choc rano idą chmury nisko drogą
+gdzie jesteś
+
+Wygenerowano: model n-gram (n=3)
+Korpus: Mickiewicz + Paktofonika + Stachura

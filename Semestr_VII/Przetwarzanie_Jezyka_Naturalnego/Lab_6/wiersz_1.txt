@@ -1,0 +1,15 @@
+WIERSZ #1
+============================================================
+
+ileż dałbym żeby dzień był jedynie długim wierszem
+i żeby noc ciemną jego stroną
+wszystko jest poezją a najmniej poezją
+jest napisany wiersz
+
+cisza nocna spłynęła jak morze,
+gwiazdy patrzą z góry jak oczy.
+w sercu moim tęsknota i trwoga,
+i miłość, co
+
+Wygenerowano: model n-gram (n=3)
+Korpus: Mickiewicz + Paktofonika + Stachura

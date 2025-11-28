@@ -1,0 +1,6 @@
+name: lab_3
+dev_dependencies:
+  test: ^1.25.0
+
+environment:
+  sdk: "^3.9.0"

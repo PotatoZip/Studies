@@ -1,0 +1,15 @@
+WIERSZ #4
+============================================================
+
+człowiek człowiekowi strykiem
+lecz ty nie daj się zgnębić
+lecz ty nie daj się zgnębić
+lecz ty nie daj się spętlić
+ze mną można tylko pójść na wrzosowisko
+i zapomnieć wszystko jaka epoka jaki wiek
+ja cóż włóczęga niespokojny duch
+który szuka miejsca na tej ziemi
+w krzywe sosny na
+
+Wygenerowano: model n-gram (n=3)
+Korpus: Mickiewicz + Paktofonika + Stachura

@@ -1,0 +1,31 @@
+WYGENEROWANE WIERSZE - Model MLE (NLTK)
+Korpus: Mickiewicz + Stachura + styl rap
+============================================================
+
+WIERSZ 1
+----------------------------------------
+życie jest moją bronią przeciw złu
+
+WIERSZ 2
+----------------------------------------
+w sercu bramie !
+
+WIERSZ 3
+----------------------------------------
+słowa lecą jak kule prosto w cel twardy jest ten świat lecz ja wciąż gram swój rap wiem że czas ucieka jak woda przez dłoń ale stoję mocno z wiarą w sobie patrzę w niebo szukam swojej drogi muzyka jest moją bronią
+moją bronią przeciw złu
+
+WIERSZ 4
+----------------------------------------
+patrzę w niebo , miecz oburącz trzyma ; takim był ,
+był , gdy przysięgał na stopniach ołtarzów , że tym mieczem wypędzi z polski trzech mocarzów ,
+mocarzów , albo sam na nim padnie .
+
+WIERSZ 5
+----------------------------------------
+czas płynie ; wdział więc jak mógł najprędzej niedzielne ubranie nagotowane z rana ,
+rana , w której lat kilku dzieje chciano zamknąć w słowa krótkie i poplątane ,
+poplątane , w której lat kilku dzieje chciano zamknąć w słowa krótkie i poplątane ,
+poplątane , w cyfrę powiązany płotek połyskał się wstążkami jaskrawych stokrotek ; grządki ,
+grządki , widać z liczby kopic , co pod strzechą zmieścić się nie może .
+
