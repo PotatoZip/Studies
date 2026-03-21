@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: pl.example.lab1.Lab2Grade4ValidationTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.772 s -- in pl.example.lab1.Lab2Grade4ValidationTest
