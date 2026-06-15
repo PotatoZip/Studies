@@ -1,0 +1,12 @@
+.password-restore-text {
+    color: rgb(90, 184, 255);
+    font-size: 10px;
+    font-family: "KronaOneFont", sans-serif;
+    top: 5px;
+    text-decoration: none;
+    
+}
+
+.password-restore-text:hover {
+    color: rgb(123, 198, 255);
+}

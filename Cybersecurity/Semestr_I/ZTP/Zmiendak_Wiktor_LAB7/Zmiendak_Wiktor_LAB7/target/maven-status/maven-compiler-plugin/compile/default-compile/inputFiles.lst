@@ -1,0 +1,17 @@
+C:\Users\ziggs\Desktop\Studies\Cybersecurity\Semestr_I\ZTP\Zmiendak_Wiktor_LAB7\Zmiendak_Wiktor_LAB7\src\main\java\pl\example\lab7\client\CachingProductClient.java
+C:\Users\ziggs\Desktop\Studies\Cybersecurity\Semestr_I\ZTP\Zmiendak_Wiktor_LAB7\Zmiendak_Wiktor_LAB7\src\main\java\pl\example\lab7\client\GrpcProductClientAdapter.java
+C:\Users\ziggs\Desktop\Studies\Cybersecurity\Semestr_I\ZTP\Zmiendak_Wiktor_LAB7\Zmiendak_Wiktor_LAB7\src\main\java\pl\example\lab7\client\ProductClient.java
+C:\Users\ziggs\Desktop\Studies\Cybersecurity\Semestr_I\ZTP\Zmiendak_Wiktor_LAB7\Zmiendak_Wiktor_LAB7\src\main\java\pl\example\lab7\client\ProductClientFactory.java
+C:\Users\ziggs\Desktop\Studies\Cybersecurity\Semestr_I\ZTP\Zmiendak_Wiktor_LAB7\Zmiendak_Wiktor_LAB7\src\main\java\pl\example\lab7\client\RestProductClientAdapter.java
+C:\Users\ziggs\Desktop\Studies\Cybersecurity\Semestr_I\ZTP\Zmiendak_Wiktor_LAB7\Zmiendak_Wiktor_LAB7\src\main\java\pl\example\lab7\client\RetryingProductClient.java
+C:\Users\ziggs\Desktop\Studies\Cybersecurity\Semestr_I\ZTP\Zmiendak_Wiktor_LAB7\Zmiendak_Wiktor_LAB7\src\main\java\pl\example\lab7\config\AppConfig.java
+C:\Users\ziggs\Desktop\Studies\Cybersecurity\Semestr_I\ZTP\Zmiendak_Wiktor_LAB7\Zmiendak_Wiktor_LAB7\src\main\java\pl\example\lab7\domain\Order.java
+C:\Users\ziggs\Desktop\Studies\Cybersecurity\Semestr_I\ZTP\Zmiendak_Wiktor_LAB7\Zmiendak_Wiktor_LAB7\src\main\java\pl\example\lab7\domain\ProductView.java
+C:\Users\ziggs\Desktop\Studies\Cybersecurity\Semestr_I\ZTP\Zmiendak_Wiktor_LAB7\Zmiendak_Wiktor_LAB7\src\main\java\pl\example\lab7\errors\ServiceUnavailableException.java
+C:\Users\ziggs\Desktop\Studies\Cybersecurity\Semestr_I\ZTP\Zmiendak_Wiktor_LAB7\Zmiendak_Wiktor_LAB7\src\main\java\pl\example\lab7\grpc\GrpcProductGateway.java
+C:\Users\ziggs\Desktop\Studies\Cybersecurity\Semestr_I\ZTP\Zmiendak_Wiktor_LAB7\Zmiendak_Wiktor_LAB7\src\main\java\pl\example\lab7\grpc\GrpcStatusCode.java
+C:\Users\ziggs\Desktop\Studies\Cybersecurity\Semestr_I\ZTP\Zmiendak_Wiktor_LAB7\Zmiendak_Wiktor_LAB7\src\main\java\pl\example\lab7\grpc\GrpcStatusException.java
+C:\Users\ziggs\Desktop\Studies\Cybersecurity\Semestr_I\ZTP\Zmiendak_Wiktor_LAB7\Zmiendak_Wiktor_LAB7\src\main\java\pl\example\lab7\rest\RestConflictException.java
+C:\Users\ziggs\Desktop\Studies\Cybersecurity\Semestr_I\ZTP\Zmiendak_Wiktor_LAB7\Zmiendak_Wiktor_LAB7\src\main\java\pl\example\lab7\rest\RestNotFoundException.java
+C:\Users\ziggs\Desktop\Studies\Cybersecurity\Semestr_I\ZTP\Zmiendak_Wiktor_LAB7\Zmiendak_Wiktor_LAB7\src\main\java\pl\example\lab7\rest\RestProductGateway.java
+C:\Users\ziggs\Desktop\Studies\Cybersecurity\Semestr_I\ZTP\Zmiendak_Wiktor_LAB7\Zmiendak_Wiktor_LAB7\src\main\java\pl\example\lab7\service\OrderService.java

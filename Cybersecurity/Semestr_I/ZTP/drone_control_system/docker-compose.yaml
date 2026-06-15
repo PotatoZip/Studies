@@ -1,0 +1,87 @@
+version: "3.9"
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: drone-db
+    environment:
+      POSTGRES_USER: drone_user
+      POSTGRES_PASSWORD: drone_password
+      POSTGRES_DB: drone_control_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U drone_user -d drone_control_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - drone-network
+
+  # Redis (Latest-State cache + Pub/Sub message broker)
+  redis:
+    image: redis:7-alpine
+    container_name: drone-redis
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "6378:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - drone-network
+
+  # React Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: drone-frontend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+      - drone-network
+    restart: unless-stopped
+
+  # Backend API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: drone-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/drone_control_db
+      SPRING_DATASOURCE_USERNAME: drone_user
+      SPRING_DATASOURCE_PASSWORD: drone_password
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: "6379"
+      APP_JWT_SECRET: ${APP_JWT_SECRET:-change-me-in-production-this-is-a-dev-only-256-bit-secret-key}
+    ports:
+      - "8081:8081"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - drone-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  drone-network:
+    driver: bridge

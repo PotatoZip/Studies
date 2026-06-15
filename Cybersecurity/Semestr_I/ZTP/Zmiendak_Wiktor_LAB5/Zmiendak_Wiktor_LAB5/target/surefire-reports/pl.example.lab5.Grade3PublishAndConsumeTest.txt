@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: pl.example.lab5.Grade3PublishAndConsumeTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.957 s -- in pl.example.lab5.Grade3PublishAndConsumeTest

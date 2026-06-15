@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: pl.example.lab6.Grade3LoanAvailabilityTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.072 s -- in pl.example.lab6.Grade3LoanAvailabilityTest

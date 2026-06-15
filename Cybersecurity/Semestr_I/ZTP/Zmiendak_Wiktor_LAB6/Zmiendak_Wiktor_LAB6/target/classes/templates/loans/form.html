@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>New loan</title>
+  </head>
+  <body>
+    <h1>Nowe wypożyczenie</h1>
+    <p>
+      Książka:
+      <strong th:text="${selectedBook?.title}">Title</strong>
+      (<span th:text="${selectedBook?.author}">Author</span>)
+    </p>
+    <form th:action="@{/loans}" th:object="${loanForm}" method="post">
+      <input type="hidden" th:field="*{bookId}" />
+      <div>
+        <label>Czytelnik</label>
+        <input type="text" th:field="*{borrower}" />
+        <p th:errors="*{borrower}">borrower error</p>
+      </div>
+      <p
+        th:if="${#fields.hasGlobalErrors()}"
+        th:each="err : ${#fields.globalErrors()}"
+        th:text="${err}"
+      >
+        global error
+      </p>
+      <button type="submit">Wypożycz</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+# Java/Maven
+**/target/
+**/*.class
+*.jar
+*.war
+*.nar
+*.ear
+
+# Node/Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+
+# IDE
+.idea/
+.vscode/
+.DS_Store
+*.iml
+*.swp
+*.swo
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment
+.env
+.env.local
+.env.*.local
+token.txt

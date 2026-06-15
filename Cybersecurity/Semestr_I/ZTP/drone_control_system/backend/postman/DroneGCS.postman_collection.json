@@ -1,0 +1,425 @@
+{
+  "info": {
+    "name": "Drone GCS Backend",
+    "description": "Ground Control Station backend API. Run 'Auth > Register' or 'Auth > Login' first — both scripts capture the JWT into the {{token}} collection variable, which every protected request uses automatically.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8081/api/v1" },
+    { "key": "simBase", "value": "http://localhost:8081/api/simulation" },
+    { "key": "token", "value": "" },
+    { "key": "droneId", "value": "drone-1" },
+    { "key": "commandId", "value": "" },
+    { "key": "droneDbId", "value": "" },
+    { "key": "missionId", "value": "" },
+    { "key": "runId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "auth": { "type": "noauth" },
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/health", "host": ["{{baseUrl}}"], "path": ["health"] }
+      }
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('created or ok', () => pm.expect(pm.response.code).to.be.oneOf([200, 201]));",
+                  "const json = pm.response.json();",
+                  "if (json.token) { pm.collectionVariables.set('token', json.token); }"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"operator1\",\n  \"email\": \"op1@example.com\",\n  \"password\": \"password123\",\n  \"role\": \"OPERATOR\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/auth/register", "host": ["{{baseUrl}}"], "path": ["auth", "register"] }
+          }
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('ok', () => pm.response.to.have.status(200));",
+                  "const json = pm.response.json();",
+                  "if (json.token) { pm.collectionVariables.set('token', json.token); }"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"operator1\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth", "login"] }
+          }
+        },
+        {
+          "name": "Me",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/auth/me", "host": ["{{baseUrl}}"], "path": ["auth", "me"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Drone State (live cache)",
+      "item": [
+        {
+          "name": "All online drones",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/drones/state", "host": ["{{baseUrl}}"], "path": ["drones", "state"] }
+          }
+        },
+        {
+          "name": "One drone state",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/drones/state/{{droneId}}", "host": ["{{baseUrl}}"], "path": ["drones", "state", "{{droneId}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Commands",
+      "item": [
+        {
+          "name": "Submit (generic)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('accepted', () => pm.response.to.have.status(202));",
+                  "const json = pm.response.json();",
+                  "if (json.commandId) { pm.collectionVariables.set('commandId', json.commandId); }"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"droneId\": \"{{droneId}}\",\n  \"type\": \"TAKEOFF\",\n  \"altitudeMeters\": 50\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/commands", "host": ["{{baseUrl}}"], "path": ["commands"] }
+          }
+        },
+        {
+          "name": "Takeoff",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/commands/{{droneId}}/takeoff?altitudeMeters=50",
+              "host": ["{{baseUrl}}"],
+              "path": ["commands", "{{droneId}}", "takeoff"],
+              "query": [{ "key": "altitudeMeters", "value": "50" }]
+            }
+          }
+        },
+        {
+          "name": "Land",
+          "request": {
+            "method": "POST",
+            "url": { "raw": "{{baseUrl}}/commands/{{droneId}}/land", "host": ["{{baseUrl}}"], "path": ["commands", "{{droneId}}", "land"] }
+          }
+        },
+        {
+          "name": "RTL",
+          "request": {
+            "method": "POST",
+            "url": { "raw": "{{baseUrl}}/commands/{{droneId}}/rtl", "host": ["{{baseUrl}}"], "path": ["commands", "{{droneId}}", "rtl"] }
+          }
+        },
+        {
+          "name": "Waypoint",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/commands/{{droneId}}/waypoint?latitude=51.5100&longitude=-0.1200&altitudeMeters=40",
+              "host": ["{{baseUrl}}"],
+              "path": ["commands", "{{droneId}}", "waypoint"],
+              "query": [
+                { "key": "latitude", "value": "51.5100" },
+                { "key": "longitude", "value": "-0.1200" },
+                { "key": "altitudeMeters", "value": "40" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Outstanding queue",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/commands/{{droneId}}/queue", "host": ["{{baseUrl}}"], "path": ["commands", "{{droneId}}", "queue"] }
+          }
+        },
+        {
+          "name": "Command status",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/commands/status/{{commandId}}", "host": ["{{baseUrl}}"], "path": ["commands", "status", "{{commandId}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Telemetry",
+      "item": [
+        {
+          "name": "Ingest (direct HTTP)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"droneId\": \"{{droneId}}\",\n  \"latitude\": 51.5074,\n  \"longitude\": -0.1278,\n  \"altitude\": 35.0,\n  \"speed\": 4.2,\n  \"battery\": 88.0\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/telemetry/ingest", "host": ["{{baseUrl}}"], "path": ["telemetry", "ingest"] }
+          }
+        },
+        {
+          "name": "Recent (last 100)",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/telemetry/{{droneId}}/recent", "host": ["{{baseUrl}}"], "path": ["telemetry", "{{droneId}}", "recent"] }
+          }
+        },
+        {
+          "name": "History (paged)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/telemetry/{{droneId}}/history?page=0&size=50",
+              "host": ["{{baseUrl}}"],
+              "path": ["telemetry", "{{droneId}}", "history"],
+              "query": [
+                { "key": "page", "value": "0" },
+                { "key": "size", "value": "50" },
+                { "key": "from", "value": "2026-06-01T00:00:00Z", "disabled": true },
+                { "key": "to", "value": "2026-06-02T00:00:00Z", "disabled": true }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Drone Registry (CRUD)",
+      "item": [
+        {
+          "name": "Create drone",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.id) { pm.collectionVariables.set('droneDbId', json.id); }"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Falcon-1\",\n  \"model\": \"PX4 X500\",\n  \"serialNumber\": \"SN-0001\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/drones", "host": ["{{baseUrl}}"], "path": ["drones"] }
+          }
+        },
+        {
+          "name": "List drones",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/drones", "host": ["{{baseUrl}}"], "path": ["drones"] }
+          }
+        },
+        {
+          "name": "Get drone by id",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/drones/{{droneDbId}}", "host": ["{{baseUrl}}"], "path": ["drones", "{{droneDbId}}"] }
+          }
+        },
+        {
+          "name": "Update drone status",
+          "request": {
+            "method": "PATCH",
+            "url": {
+              "raw": "{{baseUrl}}/drones/{{droneDbId}}/status?status=ACTIVE",
+              "host": ["{{baseUrl}}"],
+              "path": ["drones", "{{droneDbId}}", "status"],
+              "query": [{ "key": "status", "value": "ACTIVE" }]
+            }
+          }
+        },
+        {
+          "name": "Delete drone",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/drones/{{droneDbId}}", "host": ["{{baseUrl}}"], "path": ["drones", "{{droneDbId}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Missions",
+      "item": [
+        {
+          "name": "Create mission",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('created', () => pm.response.to.have.status(200));",
+                  "const json = pm.response.json();",
+                  "if (json.id) { pm.collectionVariables.set('missionId', json.id); }"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Survey Alpha\",\n  \"droneIds\": [\"{{droneDbId}}\"]\n}" },
+            "url": { "raw": "{{baseUrl}}/missions", "host": ["{{baseUrl}}"], "path": ["missions"] },
+            "description": "droneIds is REQUIRED (>=1). Run 'Drone Registry > Create drone' first so {{droneDbId}} is populated."
+          }
+        },
+        {
+          "name": "Create mission (missing droneIds -> 400)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('rejected without drones', () => pm.response.to.have.status(400));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"No Drones\"\n}" },
+            "url": { "raw": "{{baseUrl}}/missions", "host": ["{{baseUrl}}"], "path": ["missions"] },
+            "description": "Validation check: a mission with no droneIds must be rejected with 400."
+          }
+        },
+        {
+          "name": "List missions",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/missions", "host": ["{{baseUrl}}"], "path": ["missions"] }
+          }
+        },
+        {
+          "name": "Start mission",
+          "request": {
+            "method": "POST",
+            "url": { "raw": "{{baseUrl}}/missions/{{missionId}}/start", "host": ["{{baseUrl}}"], "path": ["missions", "{{missionId}}", "start"] }
+          }
+        },
+        {
+          "name": "Stop mission",
+          "request": {
+            "method": "POST",
+            "url": { "raw": "{{baseUrl}}/missions/{{missionId}}/stop", "host": ["{{baseUrl}}"], "path": ["missions", "{{missionId}}", "stop"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Simulation (full pipeline)",
+      "item": [
+        {
+          "name": "Start mission simulation",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('accepted', () => pm.response.to.have.status(202));",
+                  "const json = pm.response.json();",
+                  "if (json.runId) { pm.collectionVariables.set('runId', json.runId); }"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"droneId\": \"drone-901\",\n  \"rateHz\": 10,\n  \"phaseSeconds\": 3\n}"
+            },
+            "url": { "raw": "{{simBase}}/start", "host": ["{{simBase}}"], "path": ["start"] },
+            "description": "Runs ARM->TAKEOFF->WAYPOINT->RTL->LAND->DISARM through the real pipeline (router, mock MAVLink, Redis state, WebSocket, persistence). Returns a runId; poll it below."
+          }
+        },
+        {
+          "name": "Run status",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{simBase}}/{{runId}}", "host": ["{{simBase}}"], "path": ["{{runId}}"] }
+          }
+        },
+        {
+          "name": "List runs",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{simBase}}", "host": ["{{simBase}}"] }
+          }
+        },
+        {
+          "name": "Stop run",
+          "request": {
+            "method": "POST",
+            "url": { "raw": "{{simBase}}/{{runId}}/stop", "host": ["{{simBase}}"], "path": ["{{runId}}", "stop"] }
+          }
+        }
+      ]
+    }
+  ]
+}

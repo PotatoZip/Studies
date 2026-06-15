@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: pl.example.lab8.Grade4QueryAndPagingTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.09 s -- in pl.example.lab8.Grade4QueryAndPagingTest

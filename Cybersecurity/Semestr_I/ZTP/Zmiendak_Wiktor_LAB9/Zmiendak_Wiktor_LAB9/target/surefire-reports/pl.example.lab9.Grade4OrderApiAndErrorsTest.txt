@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: pl.example.lab9.Grade4OrderApiAndErrorsTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.81 s -- in pl.example.lab9.Grade4OrderApiAndErrorsTest

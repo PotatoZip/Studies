@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Loans</title>
+  </head>
+  <body>
+    <h1>Lista wypożyczeń</h1>
+    <p>
+      <a th:href="@{/loans(active=true)}">Aktywne</a>
+      |
+      <a th:href="@{/loans(active=false)}">Wszystkie</a>
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Książka</th>
+          <th>Czytelnik</th>
+          <th>Borrowed on</th>
+          <th>Due date</th>
+          <th>Status</th>
+          <th>Akcja</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="loan : ${loans}">
+          <td th:text="${loan.id}">1</td>
+          <td th:text="${loan.bookTitle}">Book</td>
+          <td th:text="${loan.borrower}">Borrower</td>
+          <td th:text="${loan.borrowedOn}">2026-04-20</td>
+          <td th:text="${loan.dueDate}">2026-05-04</td>
+          <td th:text="${loan.returned ? 'Returned' : 'Active'}">Active</td>
+          <td>
+            <form
+              th:if="${!loan.returned}"
+              th:action="@{/loans/{id}/return(id=${loan.id})}"
+              method="post"
+            >
+              <button type="submit">Zwróć</button>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

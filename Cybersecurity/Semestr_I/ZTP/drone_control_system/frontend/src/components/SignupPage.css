@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.signup-container {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(180deg, #1E7CBF,#255EBA, #012787);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.card {
+  background: #f2f2f2;
+  padding: 40px 50px;
+  border-radius: 50px;
+  width: 550px;
+  box-shadow: 0 10px 30px rgba(110, 189, 242, 0.35);
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  width: 110px;
+}
+
+.title {
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: #000000;
+  font-weight: 500;
+  font-family: "KronaOneFont";
+  text-align: left;
+}
+
+.subtitle {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 500;
+  color: #000000;
+  font-family: "KronaOneFont";
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 20px;
+  border: none;
+  background: #d4d4d4;
+  color: #7b7b7b;
+  font-family: "KronaOneFont", sans-serif;
+  font-size: 12px;
+  outline: none;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.eye {
+  position: absolute;
+  right: 15px;
+  top: 25%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.eye-2 {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.sign-in {
+  background: linear-gradient(180deg, #5099ff, #3673e6);
+  color: white;
+  font-family: "KronaOneFont";
+  font-size: 16px;
+}
+
+.sign-in:hover {
+  background: #5099ff;
+  color: white;
+}
+
+.submit {
+  background: linear-gradient(180deg, #5099ff, #3673e6);
+  color: white;
+  font-family: "KronaOneFont";
+  font-size: 16px;
+}
+
+.submit:hover {
+  background: #5099ff;
+  color: white;
+}
+
+.footer {
+  margin-top: 20px;
+  color: white;
+  font-size: 10px;
+  font-family: "KronaOneFont";
+}

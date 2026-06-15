@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Books</title>
+  </head>
+  <body>
+    <h1>Lista książek</h1>
+    <p><a th:href="@{/books/new}">Dodaj książkę</a></p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tytuł</th>
+          <th>Autor</th>
+          <th>Wszystkie</th>
+          <th>Dostępne</th>
+          <th>Akcja</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="book : ${books}">
+          <td th:text="${book.id}">1</td>
+          <td th:text="${book.title}">Title</td>
+          <td th:text="${book.author}">Author</td>
+          <td th:text="${book.totalCopies}">0</td>
+          <td th:text="${book.availableCopies}">0</td>
+          <td>
+            <a
+              th:if="${book.available}"
+              th:href="@{/loans/new(bookId=${book.id})}"
+              >Wypożycz</a
+            >
+            <span th:if="${!book.available}">Brak egzemplarzy</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+.subtitle-2fa {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 500;
+    color: #000000;
+    font-family: "KronaOneFont";
+}
+
+.code-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  color: #000000;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.digit-input {
+  width: 50px;
+  height: 70px;
+  border-radius: 12px;
+  border: none;
+  background: #ddd;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: #73acf1;
+}
+
+.dash {
+  font-size: 35px;
+  color: #848484;
+}
+
+.button-row{
+  display: flex;
+    
+}
+
+.btn-2fa {
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  margin-left: auto;
+  margin-top: 10px;
+}
+
+.submit {
+  background: linear-gradient(180deg, #5099ff, #3673e6);
+  color: white;
+  font-family: "KronaOneFont";
+  font-size: 16px;
+  align-items: center;
+}
+
+.submit:hover {
+  background: #5099ff;
+  color: white;
+}

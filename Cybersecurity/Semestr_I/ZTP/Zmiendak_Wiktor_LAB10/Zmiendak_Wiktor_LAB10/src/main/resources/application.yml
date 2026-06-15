@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: lab10-outbox-saga
+server:
+  port: 8080

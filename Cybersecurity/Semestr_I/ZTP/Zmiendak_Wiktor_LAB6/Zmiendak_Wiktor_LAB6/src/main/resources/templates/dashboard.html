@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <h1>Dashboard biblioteki</h1>
+    <p th:text="'Books: ' + ${dashboard.booksCount}">Books: 0</p>
+    <ul>
+      <li th:text="'Total copies: ' + ${dashboard.totalCopies}">
+        Total copies: 0
+      </li>
+      <li th:text="'Available copies: ' + ${dashboard.availableCopies}">
+        Available copies: 0
+      </li>
+      <li th:text="'Active loans: ' + ${dashboard.activeLoans}">
+        Active loans: 0
+      </li>
+    </ul>
+  </body>
+</html>
