@@ -1,0 +1,6 @@
+fastapi==0.115.8
+uvicorn[standard]==0.34.0
+cryptography==44.0.1
+pqcrypto==0.3.4
+azure-monitor-opentelemetry
+opentelemetry-instrumentation-fastapi

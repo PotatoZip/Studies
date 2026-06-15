@@ -1,0 +1,14 @@
+CLIENT
+python client/client.py --base-url https://serwerbcho-app.azurewebsites.net
+
+BENCHMARK
+python benchmarks/run_bench.py --base-url https://serwerbcho-app.azurewebsites.net --iterations 5 --delay 0.2 --out benchmarks/results.csv 
+
+BICEP
+az login
+az account set --subscription "Azure for Students"
+az group create --name "BCO-test" --location "polandcentral"
+az deployment group create `
+  --resource-group "BCO-test" `
+  --template-file "./main.bicep" `
+  --parameters namePrefix="serwerbcho-app"
