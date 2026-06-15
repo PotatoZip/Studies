@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SeeSomethingSaySomething</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://t.contentsquare.net/uxa/7c285c617ce24.js"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error": "#ba1a1a",
+              "background": "#f9f9ff",
+              "primary": "#001d44",
+              "secondary": "#7f5600",
+              "surface": "#f9f9ff",
+              "on-surface": "#191b22",
+              "on-surface-variant": "#43474f",
+              "outline": "#737780",
+              "outline-variant": "#c3c6d1",
+              "surface-container-low": "#f3f3fc",
+              "surface-container": "#ededf6",
+              "surface-container-highest": "#e1e2eb",
+              "primary-container": "#00326b",
+              "on-primary": "#ffffff",
+              "secondary-container": "#f9ad00",
+              "on-secondary-container": "#664500",
+              "secondary-fixed": "#ffdeae",
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+          },
+        },
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
