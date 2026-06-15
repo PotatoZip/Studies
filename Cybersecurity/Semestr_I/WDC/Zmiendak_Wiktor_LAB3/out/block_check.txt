@@ -1,0 +1,4 @@
+blok=000 status=OK oryg='TO_JEST_SU' dec='TO_JEST_SU'
+blok=001 status=OK oryg='PER_TAJNA_' dec='PER_TAJNA_'
+blok=002 status=OK oryg='WIADOMOSC_' dec='WIADOMOSC_'
+blok=003 status=OK oryg='DLA_RSA\n' dec='DLA_RSA\n'

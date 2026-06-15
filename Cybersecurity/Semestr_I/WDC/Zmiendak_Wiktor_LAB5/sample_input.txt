@@ -1,0 +1,5 @@
+Przykladowy plik wejsciowy do demonstracji kryptografii FIPS w Pythonie.
+Zawiera kilka zdan, aby pokazac szyfrowanie symetryczne, asymetryczne,
+obliczanie hashy oraz podpis cyfrowy.
+
+To jest tekst testowy dla laboratorium.

@@ -1,0 +1,113 @@
+{
+  "results": [
+    {
+      "bits": 32,
+      "n": 2483931547,
+      "method": "Pollard Rho",
+      "seconds": 0.00012149999929533806,
+      "iterations": 151,
+      "success": true,
+      "p_found": 46061,
+      "q_found": 53927
+    },
+    {
+      "bits": 40,
+      "n": 551236711057,
+      "method": "Pollard Rho",
+      "seconds": 0.0009723000002850313,
+      "iterations": 1254,
+      "success": true,
+      "p_found": 708251,
+      "q_found": 778307
+    },
+    {
+      "bits": 48,
+      "n": 144296806896373,
+      "method": "Pollard Rho",
+      "seconds": 0.0004731999997602543,
+      "iterations": 613,
+      "success": true,
+      "p_found": 11691731,
+      "q_found": 12341783
+    },
+    {
+      "bits": 56,
+      "n": 43370331990302833,
+      "method": "Pollard Rho",
+      "seconds": 0.004623000000719912,
+      "iterations": 6040,
+      "success": true,
+      "p_found": 175179209,
+      "q_found": 247576937
+    },
+    {
+      "bits": 64,
+      "n": 9570794073082076503,
+      "method": "Pollard Rho",
+      "seconds": 0.01785340000060387,
+      "iterations": 16820,
+      "success": true,
+      "p_found": 2825306399,
+      "q_found": 3387524297
+    },
+    {
+      "bits": 72,
+      "n": 3235391848380701513923,
+      "method": "Pollard Rho",
+      "seconds": 0.09573549999913666,
+      "iterations": 94196,
+      "success": true,
+      "p_found": 50829264119,
+      "q_found": 63652148117
+    },
+    {
+      "bits": 80,
+      "n": 891406492402190742837469,
+      "method": "Pollard Rho",
+      "seconds": 0.8354632999999012,
+      "iterations": 745558,
+      "success": true,
+      "p_found": 910967909981,
+      "q_found": 978526776449
+    },
+    {
+      "bits": 88,
+      "n": 156250821279837526631864149,
+      "method": "Pollard Rho",
+      "seconds": 6.055475499999375,
+      "iterations": 5445495,
+      "success": true,
+      "p_found": 11355628694321,
+      "q_found": 13759768436069
+    }
+  ],
+  "fits": {
+    "linear": {
+      "params": {
+        "a": 0.06973058080356644,
+        "b": -3.307495135714099
+      },
+      "r2": 0.4184743280802081
+    },
+    "power": {
+      "params": {
+        "a": 1.7012884014690802e-20,
+        "b": 10.215390587132717
+      },
+      "r2": 0.25397674051041086
+    },
+    "exponential": {
+      "params": {
+        "a": 1.789420700114953e-07,
+        "b": 0.18865614590183702
+      },
+      "r2": 0.6804042425501811
+    }
+  },
+  "best_fit": "exponential",
+  "extrapolation_seconds": {
+    "96": 13.128511189097086,
+    "128": 5496.039169179204,
+    "256": 168805728844041.84
+  }
+}
