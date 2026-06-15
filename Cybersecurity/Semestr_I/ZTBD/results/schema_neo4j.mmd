@@ -1,0 +1,25 @@
+flowchart LR
+    G[Galaxy]
+    C[Constellation]
+    SS[StarSystem]
+    S[Star]
+    P[Planet]
+    M[Moon]
+    T[Telescope]
+    I[Instrument]
+    MS[Mission]
+    O[Observation]
+
+    G -->|HAS_SYSTEM| SS
+    SS -->|IN_CONSTELLATION| C
+    SS -->|HAS_STAR| S
+    S -->|HAS_PLANET| P
+    P -->|HAS_MOON| M
+
+    T -->|HAS_INSTRUMENT| I
+
+    O -->|USED_TELESCOPE| T
+    O -->|USED_INSTRUMENT| I
+    O -->|IN_MISSION| MS
+    O -->|OBSERVED| S
+    O -->|OBSERVED| P

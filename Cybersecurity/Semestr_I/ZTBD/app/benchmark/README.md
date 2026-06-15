@@ -1,6 +1,6 @@
 ﻿# Benchmark - prosta instrukcja
 
-1. `benchmark.py` - PostgreSQL
+1. `benchmark_postgres.py` - PostgreSQL
 2. `benchmark_mysql.py` - MySQL
 3. `benchmark_mongodb.py` - MongoDB
 4. `benchmark_neo4j.py` - Neo4j
@@ -40,8 +40,8 @@ pip install -r requirements.txt
 ### PostgreSQL
 
 ```bash
-python benchmark.py load --size small
-python benchmark.py bench --size small --trials 3
+python benchmark_postgres.py load --size small
+python benchmark_postgres.py bench --size small --trials 3
 ```
 
 ### MySQL

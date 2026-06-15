@@ -1,0 +1,94 @@
+erDiagram
+    GALAXIES {
+        INT id PK
+        VARCHAR name UK
+        VARCHAR galaxy_type
+        NUMERIC distance_mly
+    }
+
+    CONSTELLATIONS {
+        INT id PK
+        VARCHAR name UK
+        NUMERIC area_sq_deg
+    }
+
+    STAR_SYSTEMS {
+        INT id PK
+        VARCHAR name UK
+        INT galaxy_id FK
+        INT constellation_id FK
+        NUMERIC distance_ly
+    }
+
+    STARS {
+        INT id PK
+        VARCHAR name UK
+        INT system_id FK
+        VARCHAR spectral_type
+        NUMERIC mass_solar
+        NUMERIC radius_solar
+    }
+
+    PLANETS {
+        INT id PK
+        VARCHAR name
+        INT star_id FK
+        VARCHAR planet_type
+        NUMERIC mass_earth
+        NUMERIC radius_earth
+        NUMERIC orbit_period_days
+    }
+
+    MOONS {
+        INT id PK
+        VARCHAR name
+        INT planet_id FK
+        NUMERIC mass_lunar
+        NUMERIC radius_lunar
+        NUMERIC orbit_period_days
+    }
+
+    TELESCOPES {
+        INT id PK
+        VARCHAR name UK
+        VARCHAR telescope_type
+        VARCHAR location
+        NUMERIC aperture_m
+    }
+
+    INSTRUMENTS {
+        INT id PK
+        VARCHAR name
+        INT telescope_id FK
+        VARCHAR wavelength_band
+        NUMERIC resolution_arcsec
+    }
+
+    MISSIONS {
+        INT id PK
+        VARCHAR name UK
+        VARCHAR agency
+        DATE start_date
+        DATE end_date
+    }
+
+    OBSERVATIONS {
+        INT id PK
+        INT telescope_id FK
+        INT instrument_id FK
+        INT mission_id FK
+        VARCHAR target_type
+        INT target_id
+        TIMESTAMP observed_at
+        INT exposure_s
+    }
+
+    GALAXIES ||--o{ STAR_SYSTEMS : contains
+    CONSTELLATIONS ||--o{ STAR_SYSTEMS : maps
+    STAR_SYSTEMS ||--o{ STARS : has
+    STARS ||--o{ PLANETS : has
+    PLANETS ||--o{ MOONS : has
+    TELESCOPES ||--o{ INSTRUMENTS : has
+    TELESCOPES ||--o{ OBSERVATIONS : used_in
+    INSTRUMENTS ||--o{ OBSERVATIONS : used_in
+    MISSIONS ||--o{ OBSERVATIONS : context

@@ -1,0 +1,30 @@
+flowchart LR
+    OBS[observations\n_id, telescope_id, instrument_id\nmission_id, target_type, target_id\nobserved_at, exposure_s]
+
+    subgraph CORE[Domain collections]
+        ST[stars\n_id, system_id, spectral_type]
+        PL[planets\n_id, star_id, planet_type]
+        SS[star_systems\n_id, galaxy_id, constellation_id]
+        GA[galaxies\n_id, name, galaxy_type]
+        CO[constellations\n_id, name, area_sq_deg]
+        MO[moons\n_id, planet_id]
+    end
+
+    subgraph OBSCTX[Observation context]
+        TE[telescopes\n_id, name, telescope_type]
+        IN[instruments\n_id, telescope_id, wavelength_band]
+        MI[missions\n_id, name, agency]
+    end
+
+    OBS -->|telescope_id| TE
+    OBS -->|instrument_id| IN
+    OBS -->|mission_id| MI
+    OBS -->|target_id when target_type=star| ST
+    OBS -->|target_id when target_type=planet| PL
+
+    ST -->|system_id| SS
+    PL -->|star_id| ST
+    MO -->|planet_id| PL
+    SS -->|galaxy_id| GA
+    SS -->|constellation_id| CO
+    IN -->|telescope_id| TE

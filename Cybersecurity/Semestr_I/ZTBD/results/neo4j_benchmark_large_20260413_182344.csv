@@ -1,0 +1,145 @@
+database,size,index_mode,scenario,operation,description,trial,elapsed_ms
+neo4j,large,before_indexes,C1,CREATE,Insert single mission,1,28.498
+neo4j,large,before_indexes,C1,CREATE,Insert single mission,2,9.424
+neo4j,large,before_indexes,C1,CREATE,Insert single mission,3,5.938
+neo4j,large,before_indexes,C2,CREATE,Insert single telescope,1,29.357
+neo4j,large,before_indexes,C2,CREATE,Insert single telescope,2,9.019
+neo4j,large,before_indexes,C2,CREATE,Insert single telescope,3,6.576
+neo4j,large,before_indexes,C3,CREATE,Insert single star system,1,32.874
+neo4j,large,before_indexes,C3,CREATE,Insert single star system,2,8.022
+neo4j,large,before_indexes,C3,CREATE,Insert single star system,3,10.024
+neo4j,large,before_indexes,C4,CREATE,Insert single star,1,32.684
+neo4j,large,before_indexes,C4,CREATE,Insert single star,2,11.322
+neo4j,large,before_indexes,C4,CREATE,Insert single star,3,8.106
+neo4j,large,before_indexes,C5,CREATE,Insert single planet,1,33.638
+neo4j,large,before_indexes,C5,CREATE,Insert single planet,2,12.703
+neo4j,large,before_indexes,C5,CREATE,Insert single planet,3,7.649
+neo4j,large,before_indexes,C6,CREATE,Insert batch of 100 observations,1,72.681
+neo4j,large,before_indexes,C6,CREATE,Insert batch of 100 observations,2,8.824
+neo4j,large,before_indexes,C6,CREATE,Insert batch of 100 observations,3,10.044
+neo4j,large,before_indexes,R1,READ,Point lookup observation by PK,1,45.544
+neo4j,large,before_indexes,R1,READ,Point lookup observation by PK,2,13.192
+neo4j,large,before_indexes,R1,READ,Point lookup observation by PK,3,22.019
+neo4j,large,before_indexes,R2,READ,Range read by timestamp with limit,1,302.497
+neo4j,large,before_indexes,R2,READ,Range read by timestamp with limit,2,263.859
+neo4j,large,before_indexes,R2,READ,Range read by timestamp with limit,3,346.821
+neo4j,large,before_indexes,R3,READ,Join-style read across observation context,1,133.95
+neo4j,large,before_indexes,R3,READ,Join-style read across observation context,2,55.829
+neo4j,large,before_indexes,R3,READ,Join-style read across observation context,3,41.515
+neo4j,large,before_indexes,R4,READ,Aggregate avg exposure per telescope,1,67.304
+neo4j,large,before_indexes,R4,READ,Aggregate avg exposure per telescope,2,23.934
+neo4j,large,before_indexes,R4,READ,Aggregate avg exposure per telescope,3,27.932
+neo4j,large,before_indexes,R5,READ,Filter planets by type and mass,1,79.276
+neo4j,large,before_indexes,R5,READ,Filter planets by type and mass,2,8.331
+neo4j,large,before_indexes,R5,READ,Filter planets by type and mass,3,7.431
+neo4j,large,before_indexes,R6,READ,Deep relation read from galaxy,1,129.178
+neo4j,large,before_indexes,R6,READ,Deep relation read from galaxy,2,14.009
+neo4j,large,before_indexes,R6,READ,Deep relation read from galaxy,3,16.098
+neo4j,large,before_indexes,U1,UPDATE,Update one observation by PK,1,68.63
+neo4j,large,before_indexes,U1,UPDATE,Update one observation by PK,2,14.434
+neo4j,large,before_indexes,U1,UPDATE,Update one observation by PK,3,10.491
+neo4j,large,before_indexes,U2,UPDATE,Batch update observations by mission,1,46.712
+neo4j,large,before_indexes,U2,UPDATE,Batch update observations by mission,2,9.23
+neo4j,large,before_indexes,U2,UPDATE,Batch update observations by mission,3,6.354
+neo4j,large,before_indexes,U3,UPDATE,Batch update planets,1,37.277
+neo4j,large,before_indexes,U3,UPDATE,Batch update planets,2,6.945
+neo4j,large,before_indexes,U3,UPDATE,Batch update planets,3,8.465
+neo4j,large,before_indexes,U4,UPDATE,Batch update stars,1,35.972
+neo4j,large,before_indexes,U4,UPDATE,Batch update stars,2,13.479
+neo4j,large,before_indexes,U4,UPDATE,Batch update stars,3,5.155
+neo4j,large,before_indexes,U5,UPDATE,Batch update missions,1,32.563
+neo4j,large,before_indexes,U5,UPDATE,Batch update missions,2,7.446
+neo4j,large,before_indexes,U5,UPDATE,Batch update missions,3,6.753
+neo4j,large,before_indexes,U6,UPDATE,Batch update instruments,1,57.563
+neo4j,large,before_indexes,U6,UPDATE,Batch update instruments,2,11.339
+neo4j,large,before_indexes,U6,UPDATE,Batch update instruments,3,6.781
+neo4j,large,before_indexes,D1,DELETE,Delete one observation by PK,1,45.231
+neo4j,large,before_indexes,D1,DELETE,Delete one observation by PK,2,12.428
+neo4j,large,before_indexes,D1,DELETE,Delete one observation by PK,3,16.403
+neo4j,large,before_indexes,D2,DELETE,Delete observations by id range,1,42.696
+neo4j,large,before_indexes,D2,DELETE,Delete observations by id range,2,11.395
+neo4j,large,before_indexes,D2,DELETE,Delete observations by id range,3,7.62
+neo4j,large,before_indexes,D3,DELETE,Delete observations by mission,1,94.719
+neo4j,large,before_indexes,D3,DELETE,Delete observations by mission,2,12.196
+neo4j,large,before_indexes,D3,DELETE,Delete observations by mission,3,13.875
+neo4j,large,before_indexes,D4,DELETE,Delete star-target observations,1,46.139
+neo4j,large,before_indexes,D4,DELETE,Delete star-target observations,2,10.502
+neo4j,large,before_indexes,D4,DELETE,Delete star-target observations,3,18.464
+neo4j,large,before_indexes,D5,DELETE,Delete old observations,1,107.922
+neo4j,large,before_indexes,D5,DELETE,Delete old observations,2,21.734
+neo4j,large,before_indexes,D5,DELETE,Delete old observations,3,8.728
+neo4j,large,before_indexes,D6,DELETE,Delete low exposure observations,1,66.153
+neo4j,large,before_indexes,D6,DELETE,Delete low exposure observations,2,14.661
+neo4j,large,before_indexes,D6,DELETE,Delete low exposure observations,3,12.312
+neo4j,large,after_indexes,C1,CREATE,Insert single mission,1,9.039
+neo4j,large,after_indexes,C1,CREATE,Insert single mission,2,6.674
+neo4j,large,after_indexes,C1,CREATE,Insert single mission,3,5.969
+neo4j,large,after_indexes,C2,CREATE,Insert single telescope,1,5.033
+neo4j,large,after_indexes,C2,CREATE,Insert single telescope,2,8.836
+neo4j,large,after_indexes,C2,CREATE,Insert single telescope,3,5.685
+neo4j,large,after_indexes,C3,CREATE,Insert single star system,1,5.781
+neo4j,large,after_indexes,C3,CREATE,Insert single star system,2,5.584
+neo4j,large,after_indexes,C3,CREATE,Insert single star system,3,40.21
+neo4j,large,after_indexes,C4,CREATE,Insert single star,1,32.161
+neo4j,large,after_indexes,C4,CREATE,Insert single star,2,6.752
+neo4j,large,after_indexes,C4,CREATE,Insert single star,3,5.533
+neo4j,large,after_indexes,C5,CREATE,Insert single planet,1,31.466
+neo4j,large,after_indexes,C5,CREATE,Insert single planet,2,6.157
+neo4j,large,after_indexes,C5,CREATE,Insert single planet,3,6.73
+neo4j,large,after_indexes,C6,CREATE,Insert batch of 100 observations,1,89.085
+neo4j,large,after_indexes,C6,CREATE,Insert batch of 100 observations,2,8.399
+neo4j,large,after_indexes,C6,CREATE,Insert batch of 100 observations,3,13.912
+neo4j,large,after_indexes,R1,READ,Point lookup observation by PK,1,37.768
+neo4j,large,after_indexes,R1,READ,Point lookup observation by PK,2,18.238
+neo4j,large,after_indexes,R1,READ,Point lookup observation by PK,3,10.439
+neo4j,large,after_indexes,R2,READ,Range read by timestamp with limit,1,203.461
+neo4j,large,after_indexes,R2,READ,Range read by timestamp with limit,2,193.067
+neo4j,large,after_indexes,R2,READ,Range read by timestamp with limit,3,222.017
+neo4j,large,after_indexes,R3,READ,Join-style read across observation context,1,111.347
+neo4j,large,after_indexes,R3,READ,Join-style read across observation context,2,53.85
+neo4j,large,after_indexes,R3,READ,Join-style read across observation context,3,73.661
+neo4j,large,after_indexes,R4,READ,Aggregate avg exposure per telescope,1,62.749
+neo4j,large,after_indexes,R4,READ,Aggregate avg exposure per telescope,2,24.492
+neo4j,large,after_indexes,R4,READ,Aggregate avg exposure per telescope,3,26.682
+neo4j,large,after_indexes,R5,READ,Filter planets by type and mass,1,83.184
+neo4j,large,after_indexes,R5,READ,Filter planets by type and mass,2,8.577
+neo4j,large,after_indexes,R5,READ,Filter planets by type and mass,3,7.852
+neo4j,large,after_indexes,R6,READ,Deep relation read from galaxy,1,148.159
+neo4j,large,after_indexes,R6,READ,Deep relation read from galaxy,2,14.782
+neo4j,large,after_indexes,R6,READ,Deep relation read from galaxy,3,14.959
+neo4j,large,after_indexes,U1,UPDATE,Update one observation by PK,1,71.655
+neo4j,large,after_indexes,U1,UPDATE,Update one observation by PK,2,15.815
+neo4j,large,after_indexes,U1,UPDATE,Update one observation by PK,3,12.112
+neo4j,large,after_indexes,U2,UPDATE,Batch update observations by mission,1,68.963
+neo4j,large,after_indexes,U2,UPDATE,Batch update observations by mission,2,19.937
+neo4j,large,after_indexes,U2,UPDATE,Batch update observations by mission,3,11.447
+neo4j,large,after_indexes,U3,UPDATE,Batch update planets,1,68.134
+neo4j,large,after_indexes,U3,UPDATE,Batch update planets,2,8.651
+neo4j,large,after_indexes,U3,UPDATE,Batch update planets,3,7.815
+neo4j,large,after_indexes,U4,UPDATE,Batch update stars,1,69.299
+neo4j,large,after_indexes,U4,UPDATE,Batch update stars,2,6.227
+neo4j,large,after_indexes,U4,UPDATE,Batch update stars,3,6.868
+neo4j,large,after_indexes,U5,UPDATE,Batch update missions,1,58.246
+neo4j,large,after_indexes,U5,UPDATE,Batch update missions,2,5.924
+neo4j,large,after_indexes,U5,UPDATE,Batch update missions,3,7.314
+neo4j,large,after_indexes,U6,UPDATE,Batch update instruments,1,55.066
+neo4j,large,after_indexes,U6,UPDATE,Batch update instruments,2,6.31
+neo4j,large,after_indexes,U6,UPDATE,Batch update instruments,3,5.671
+neo4j,large,after_indexes,D1,DELETE,Delete one observation by PK,1,47.778
+neo4j,large,after_indexes,D1,DELETE,Delete one observation by PK,2,21.808
+neo4j,large,after_indexes,D1,DELETE,Delete one observation by PK,3,20.398
+neo4j,large,after_indexes,D2,DELETE,Delete observations by id range,1,64.864
+neo4j,large,after_indexes,D2,DELETE,Delete observations by id range,2,9.96
+neo4j,large,after_indexes,D2,DELETE,Delete observations by id range,3,13.07
+neo4j,large,after_indexes,D3,DELETE,Delete observations by mission,1,84.377
+neo4j,large,after_indexes,D3,DELETE,Delete observations by mission,2,12.446
+neo4j,large,after_indexes,D3,DELETE,Delete observations by mission,3,15.163
+neo4j,large,after_indexes,D4,DELETE,Delete star-target observations,1,71.001
+neo4j,large,after_indexes,D4,DELETE,Delete star-target observations,2,13.799
+neo4j,large,after_indexes,D4,DELETE,Delete star-target observations,3,10.007
+neo4j,large,after_indexes,D5,DELETE,Delete old observations,1,76.977
+neo4j,large,after_indexes,D5,DELETE,Delete old observations,2,14.699
+neo4j,large,after_indexes,D5,DELETE,Delete old observations,3,23.764
+neo4j,large,after_indexes,D6,DELETE,Delete low exposure observations,1,105.811
+neo4j,large,after_indexes,D6,DELETE,Delete low exposure observations,2,17.874
+neo4j,large,after_indexes,D6,DELETE,Delete low exposure observations,3,21.236

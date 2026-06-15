@@ -139,8 +139,8 @@ def load_size(size: str) -> None:
                 """
                 INSERT INTO galaxies (name, galaxy_type, distance_mly)
                 SELECT
-                    format('Galaxy-%s', gs),
-                    (ARRAY['Spiral', 'Elliptical', 'Irregular', 'Lenticular'])[1 + (gs % 4)],
+                    format('Galaxy-%%s', gs),
+                    (ARRAY['Spiral', 'Elliptical', 'Irregular', 'Lenticular'])[1 + (gs %% 4)],
                     round((gs * 0.37)::numeric, 2)
                 FROM generate_series(1, %(count)s) AS gs
                 """,
@@ -152,8 +152,8 @@ def load_size(size: str) -> None:
                 """
                 INSERT INTO constellations (name, area_sq_deg)
                 SELECT
-                    format('Constellation-%s', gs),
-                    round((30 + (gs * 3.17 % 900))::numeric, 2)
+                    format('Constellation-%%s', gs),
+                    round((30 + (gs * 3.17 %% 900))::numeric, 2)
                 FROM generate_series(1, %(count)s) AS gs
                 """,
                 {"count": cfg["constellations"]},
@@ -164,7 +164,7 @@ def load_size(size: str) -> None:
                 """
                 INSERT INTO star_systems (name, galaxy_id, constellation_id, distance_ly)
                 SELECT
-                    format('System-%s', gs),
+                    format('System-%%s', gs),
                     1 + (gs %% %(galaxies)s),
                     CASE WHEN gs %% 5 = 0 THEN NULL ELSE 1 + (gs %% %(constellations)s) END,
                     round((gs * 0.91)::numeric, 2)
@@ -182,7 +182,7 @@ def load_size(size: str) -> None:
                 """
                 INSERT INTO stars (name, system_id, spectral_type, mass_solar, radius_solar)
                 SELECT
-                    format('Star-%s', gs),
+                    format('Star-%%s', gs),
                     1 + (gs %% %(systems)s),
                     (ARRAY['O5V', 'B2V', 'A0V', 'F5V', 'G2V', 'K0V', 'M3V'])[1 + (gs %% 7)],
                     round((0.08 + (gs %% 300) * 0.01)::numeric, 3),
@@ -197,7 +197,7 @@ def load_size(size: str) -> None:
                 """
                 INSERT INTO planets (name, star_id, planet_type, mass_earth, radius_earth, orbit_period_days)
                 SELECT
-                    format('Planet-%s', gs),
+                    format('Planet-%%s', gs),
                     1 + (gs %% %(stars)s),
                     (ARRAY['Terrestrial', 'Gas Giant', 'Ice Giant', 'Super-Earth'])[1 + (gs %% 4)],
                     round((0.1 + (gs %% 1000) * 0.05)::numeric, 3),
@@ -213,7 +213,7 @@ def load_size(size: str) -> None:
                 """
                 INSERT INTO moons (name, planet_id, mass_lunar, radius_lunar, orbit_period_days)
                 SELECT
-                    format('Moon-%s', gs),
+                    format('Moon-%%s', gs),
                     1 + (gs %% %(planets)s),
                     round((0.001 + (gs %% 2000) * 0.001)::numeric, 3),
                     round((0.01 + (gs %% 700) * 0.005)::numeric, 3),
@@ -228,9 +228,9 @@ def load_size(size: str) -> None:
                 """
                 INSERT INTO telescopes (name, telescope_type, location, aperture_m)
                 SELECT
-                    format('Telescope-%s', gs),
+                    format('Telescope-%%s', gs),
                     (ARRAY['Space', 'Optical', 'Radio', 'Infrared'])[1 + (gs %% 4)],
-                    format('Location-%s', gs %% 100),
+                    format('Location-%%s', gs %% 100),
                     round((1.5 + (gs %% 200) * 0.15)::numeric, 2)
                 FROM generate_series(1, %(count)s) AS gs
                 """,
@@ -242,7 +242,7 @@ def load_size(size: str) -> None:
                 """
                 INSERT INTO instruments (name, telescope_id, wavelength_band, resolution_arcsec)
                 SELECT
-                    format('Instrument-%s', gs),
+                    format('Instrument-%%s', gs),
                     1 + (gs %% %(telescopes)s),
                     (ARRAY['UV-Vis', 'Optical', 'Infrared', 'Radio'])[1 + (gs %% 4)],
                     round((0.005 + (gs %% 1000) * 0.0005)::numeric, 4)
@@ -256,7 +256,7 @@ def load_size(size: str) -> None:
                 """
                 INSERT INTO missions (name, agency, start_date, end_date)
                 SELECT
-                    format('Mission-%s', gs),
+                    format('Mission-%%s', gs),
                     (ARRAY['NASA', 'ESA', 'JAXA', 'CNSA', 'ISRO'])[1 + (gs %% 5)],
                     date '1990-01-01' + ((gs %% 10000) * interval '1 day'),
                     CASE WHEN gs %% 4 = 0 THEN NULL ELSE date '2010-01-01' + ((gs %% 5000) * interval '1 day') END
